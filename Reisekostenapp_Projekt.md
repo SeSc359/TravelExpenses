@@ -26,3 +26,5 @@
 # Nächstes Treffen, (Freitag 16.08. bei Prototypvorstellung)
 
 # Status als Tag?
+
+# eingescannte Unterschrift in der Email 
