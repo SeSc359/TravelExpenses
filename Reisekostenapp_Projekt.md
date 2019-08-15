@@ -24,3 +24,5 @@
  ### AppPrototyp
  
 # Nächstes Treffen, (Freitag 16.08. bei Prototypvorstellung)
+
+# Status als Tag?
