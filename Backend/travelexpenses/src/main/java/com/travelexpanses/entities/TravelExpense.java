@@ -18,6 +18,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Data;
+
+@Data
 @Table(name = "travelExpenses")
 @Entity
 public class TravelExpense {
