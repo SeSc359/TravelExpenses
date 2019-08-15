@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-past-travel-expensens',
-  templateUrl: './past-travelexpensens.component.html',
-  styleUrls: ['./past-travelexpensens.component.css']
+  templateUrl: './past-travelexpenses.component.html',
+  styleUrls: ['./past-travelexpenses.component.css']
 })
-export class PastTravelExpenseListComponent implements OnInit {
+export class PastTravelExpensesComponent implements OnInit {
 
   constructor() { }
 
