@@ -10,9 +10,9 @@
 
 ## Aufgaben:
 ### Prashant: Projektkosten, Userstories, Milestones, 
-### Sebastian: GitHub Projekt anlegen  (Donnerstag)
+### Sebastian: GitHub Projekt anlegen  (Donnerstag)   DONE
 ### Prashant/Yinjue: FrontEnd Prototyp (Freitag 16.08. Nachmittag)
-### Lukas/Sebsatian: Grundaufbau Backend/Datenbank
+### Lukas/Sebastian: Grundaufbau Backend/Datenbank
 
 ## UML-Diagramm:
 ### Repo ergänzen
