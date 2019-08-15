@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatusComponent } from './status/status.component';
 import { CreateTravelExpenseComponent } from './create-travelexpense/create-travelexpense.component';
-import { PastTravelExpenseListComponent } from './past-travelexpenses/past-travelexpenses.component';
+import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelexpenses.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,9 +16,9 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     StatusComponent,
     CreateTravelExpenseComponent,
-    PastTravelExpenseListComponent,
+    PastTravelExpensesComponent,
     HomeComponent,
-    
+
   ],
   imports: [
     BrowserModule,

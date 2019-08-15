@@ -1,7 +1,7 @@
 import { HomeComponent } from './home/home.component';
 
 import { CreateTravelExpenseComponent } from './create-travelexpense/create-travelexpense.component';
-import { PastTravelExpenseListComponent } from './past-travelexpenses/past-travelexpenses.component';
+import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelexpenses.component';
 import { StatusComponent } from './status/status.component';
 
 import { NgModule } from '@angular/core';
@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'status', component: StatusComponent },
   { path: 'create', component: CreateTravelExpenseComponent},
-  { path: 'expenselist', component: PastTravelExpenseListComponent },
+  { path: 'expenselist', component: PastTravelExpensesComponent },
 
 
 ];
