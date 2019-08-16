@@ -1,0 +1,39 @@
+<form [formGroup]="expenseForm">
+    <!-- (ngSubmit) ="createExoense()" -->
+
+    <div class="form-group">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+        </div>
+        <div class="col">
+            <label>
+                <input type="text" class="form-control" placeholder="Personalnummer" formControlName="staffNumber">
+            </label>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Emailadresse" formControlName="email">
+        </div>
+        <div class="col">
+            <label>
+                <input type="text" class="form-control" placeholder="Monat" formControlName="month">
+            </label>
+        </div>
+        <div class="col">
+            <label>
+                <input type="number" class="form-control" placeholder="Jahr" formControlName="year">
+            </label>
+        </div>
+        <div class="col">
+            <label>
+                <input type="number" class="form-control" placeholder="Betrag" formControlName="costs">
+            </label>
+        </div>
+        <div class="col">
+            <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigem Namen!)</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+    </div>
+    <br>
+    <!-- <form action="irgendwas@irgendwas.de" method="post" name="Formular" enctype="text/plain"></form> -->
+    <button type="submit" value="Abschicken" class="col">Submit</button>
+</form>

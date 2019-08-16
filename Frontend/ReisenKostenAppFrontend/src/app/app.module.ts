@@ -4,19 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatusComponent } from './status/status.component';
-import { CreateTrafficExpenseComponent } from './create-traffic-expense/create-traffic-expense.component';
-import { TrafficListComponent } from './traffic-list/traffic-list.component';
+import { CreateTravelExpenseComponent } from './create-travelexpense/create-travelexpense.component';
+import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelexpenses.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatusComponent,
-    CreateTrafficExpenseComponent,
-    TrafficListComponent,
-    
+    CreateTravelExpenseComponent,
+    PastTravelExpensesComponent,
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,

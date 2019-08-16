@@ -1,6 +1,7 @@
+import { HomeComponent } from './home/home.component';
 
-import { CreateTrafficExpenseComponent } from './create-traffic-expense/create-traffic-expense.component';
-import { TrafficListComponent } from './traffic-list/traffic-list.component';
+import { CreateTravelExpenseComponent } from './create-travelexpense/create-travelexpense.component';
+import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelexpenses.component';
 import { StatusComponent } from './status/status.component';
 
 import { NgModule } from '@angular/core';
@@ -9,10 +10,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo:'status',pathMatch:'full'},
+  { path: '', redirectTo:'home',pathMatch:'full'},
+  { path: 'home', component: HomeComponent},
   { path: 'status', component: StatusComponent },
-  { path: 'create', component: CreateTrafficExpenseComponent},
-  { path: 'expenselist', component: TrafficListComponent },
+  { path: 'create', component: CreateTravelExpenseComponent},
+  { path: 'expenselist', component: PastTravelExpensesComponent },
 
 
 ];
