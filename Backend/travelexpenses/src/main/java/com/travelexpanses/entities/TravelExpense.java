@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
+//@NoArgsConstructor
 @Data
 @Table(name = "travelExpenses")
 @Entity
@@ -30,7 +31,7 @@ public class TravelExpense {
 	private Long id;
 
 	@Column(name = "staffNumber")
-	private Long staffNumber;
+	private Integer staffNumber;
 
 //	@Column(name = "destination")
 //	private String destination;
@@ -39,13 +40,16 @@ public class TravelExpense {
 	private String month;
 
 	@Column(name = "year")
-	private Long year;
+	private Integer year;
 
 //	@Column(name = "distance")
 //	private double distance;
 
 	@Column(name = "costs")
 	private double costs;
+
+	@Column(name = "status")
+	private boolean status; // false = inProgress, true = Done.
 
 	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
 	@JsonBackReference
@@ -56,5 +60,15 @@ public class TravelExpense {
 	@JsonManagedReference
 
 	private List<Tag> tags;
+
+	// Constructor
+	public TravelExpense(Integer staffNumber, String month, Integer year, double costs, boolean status) {
+		super();
+		this.staffNumber = staffNumber;
+		this.month = month;
+		this.year = year;
+		this.costs = costs;
+		this.status = status;
+	}
 
 }
