@@ -7,7 +7,7 @@ import { StatusComponent } from './status/status.component';
 import { CreateTravelExpenseComponent } from './create-travelexpense/create-travelexpense.component';
 import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelexpenses.component';
 
-
+import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 
@@ -23,7 +23,8 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
