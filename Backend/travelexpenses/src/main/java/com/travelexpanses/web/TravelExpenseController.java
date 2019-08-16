@@ -18,19 +18,19 @@ import com.travelexpanses.entities.TravelExpense;
 import com.travelexpanses.repository.TravelExpenseRepository;
 
 @CrossOrigin(origins = "localhost:4200")
-@RequestMapping("api/travelexpense")
+@RequestMapping("travelexpense")
 @RestController
 public class TravelExpenseController {
 
 	@Autowired
 	TravelExpenseRepository trexRepo;
 
-	@GetMapping("/index")
-	public Iterable<TravelExpense> indes() {
+	@GetMapping("index")
+	public Iterable<TravelExpense> index() {
 		return trexRepo.findAll();
 	}
 
-	@GetMapping("/index/{id}")
+	@GetMapping("index/{id}")
 	public ResponseEntity<TravelExpense> showExpenseById(@PathVariable Long id) {
 		Optional<TravelExpense> pickedExpense = trexRepo.findById(id);
 		if (pickedExpense.isPresent()) {
@@ -40,8 +40,8 @@ public class TravelExpenseController {
 		}
 	}
 
-	@PostMapping()
-	public TravelExpense insertNewBook(@Valid @RequestBody TravelExpense trex) {
+	@PostMapping("/save")
+	public TravelExpense insertNewTravelExpense(@Valid @RequestBody TravelExpense trex) {
 		trex.setId(null);
 		return trexRepo.save(trex);
 	}

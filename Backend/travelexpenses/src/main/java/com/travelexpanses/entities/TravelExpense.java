@@ -1,6 +1,5 @@
 package com.travelexpanses.entities;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,26 +29,23 @@ public class TravelExpense {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "user")
-	private Long user;
+	@Column(name = "staffNumber")
+	private Long staffNumber;
 
-	@Column(name = "start")
-	private String start;
+//	@Column(name = "destination")
+//	private String destination;
 
-	@Column(name = "destination")
-	private String destination;
+	@Column(name = "month")
+	private String month;
 
-	@Column(name = "date")
-	private LocalDate date;
+	@Column(name = "year")
+	private Long year;
 
-	@Column(name = "distance")
-	private double distance;
+//	@Column(name = "distance")
+//	private double distance;
 
 	@Column(name = "costs")
 	private double costs;
-
-	@Column(name = "vehicle")
-	private String vehicle;
 
 	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
 	@JsonBackReference
