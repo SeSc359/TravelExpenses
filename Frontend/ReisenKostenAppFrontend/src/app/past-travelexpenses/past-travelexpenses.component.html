@@ -2,19 +2,18 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">firstname</th>
-            <th scope="col">lastname</th>
-            <th scope="col">distence</th>
-            <th scope="col">price</th>
-          </tr>
+            <th scope="col">Monat</th>
+            <th scope="col">Jahr</th>
+            <th scope="col">Betrag</th>
+            
+        </tr>
         </thead>
-        <!-- <tbody>
-          <tr>
-            <td>{{}}</td>
-            <td>{{}}</td>
-            <td>{{}}</td>
-            <td>{{}}</td>
-            <td>{{}}</td>
-          </tr>
-        </tbody> -->
+        <tbody>
+        <tr *ngIf="travelexpense.status==true" *ngFor="let travelexpense of travelexpenselist">
+        <td scope="col">{{travelexpense.id}}</td>
+        <td scope="col">{{travelexpense.month}}</td>
+        <td scope="col">{{travelexpense.year}}</td>
+        <td scope="col">{{travelexpense.costs}}</td>
+        </tr>
+        </tbody>
       </table>
