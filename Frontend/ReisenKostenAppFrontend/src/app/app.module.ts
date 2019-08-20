@@ -10,13 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     StatusComponent,
     CreateTravelExpenseComponent,
     PastTravelExpensesComponent,
-    HomeComponent,
+    HomeComponent
 
   ],
   imports: [

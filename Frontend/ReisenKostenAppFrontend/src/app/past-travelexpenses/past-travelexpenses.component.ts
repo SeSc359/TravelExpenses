@@ -7,14 +7,14 @@ import { TravelExpenseServiceService } from '../travel-expense-service.service';
   styleUrls: ['./past-travelexpenses.component.css']
 })
 export class PastTravelExpensesComponent implements OnInit {
-  travelexpenseList: TravelExpense[];
+  travelExpenseList: TravelExpense[];
 
-  constructor(private travelexpenseService: TravelExpenseServiceService) { }
+  constructor(private travelExpenseService: TravelExpenseServiceService) { }
 
   ngOnInit() {
    
-    this.travelexpenseService.getTravelExpenseList().subscribe(travelexpenses=>(this.travelexpenseList = travelexpenses));
- 
+    this.travelExpenseService.getTravelExpenseList().subscribe(travelExpenses=>(this.travelExpenseList = travelExpenses));
+  }
   }
 
-}
+

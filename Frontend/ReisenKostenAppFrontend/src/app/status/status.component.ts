@@ -7,16 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./status.component.css']
 })
 export class StatusComponent implements OnInit {
-  // expenselist:Expense[];
+  
 
   statuscolor='red';
-  travelexpenseList: TravelExpense[];
-  travelexpense: TravelExpense;
+  travelExpenseList: TravelExpense[];
+  travelExpense: TravelExpense;
 
-  constructor(private travelexpenseService: TravelExpenseServiceService) { }
+  constructor(private travelExpenseService: TravelExpenseServiceService) { }
 
   ngOnInit() {
-    this.travelexpenseService.getTravelExpenseList().subscribe(travelexpenses=>(this.travelexpenseList = travelexpenses));
+    this.travelExpenseService.getTravelExpenseList().subscribe(travelExpenses=>(this.travelExpenseList = travelExpenses));
   }
 
   statusChange() {
@@ -25,9 +25,9 @@ export class StatusComponent implements OnInit {
 
   
   delete(){
-    const id = this.travelexpenseList.indexOf(this.travelexpense);
-    this.travelexpenseList.splice(id, 1);
-    this.travelexpense.status=true;
+    const id = this.travelExpenseList.indexOf(this.travelExpense);
+    this.travelExpenseList.splice(id, 1);
+    this.travelExpense.status=true;
 }
   
   
