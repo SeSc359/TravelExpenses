@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.travelexpanses.entities.TravelExpense;
 import com.travelexpanses.repository.TravelExpenseRepository;
 
-@CrossOrigin(origins = "localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("travelexpense")
 @RestController
 public class TravelExpenseController {
