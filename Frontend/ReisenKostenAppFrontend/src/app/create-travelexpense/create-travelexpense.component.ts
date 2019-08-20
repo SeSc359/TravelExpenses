@@ -10,6 +10,7 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 export class CreateTravelExpenseComponent implements OnInit {
 
   expenseForm: FormGroup;
+  travelExpenseList: TravelExpense[];
 
   constructor(private fb:FormBuilder,private travelexpenseService: TravelExpenseServiceService) { }
 
@@ -17,8 +18,9 @@ export class CreateTravelExpenseComponent implements OnInit {
 
     this.expenseForm = this.fb.group({
       id: [''],
+      // name: [''],
       staffNumber: [''],
-      email: [''],
+      // email: [''],
       month: [''],
       year: [''],
       costs: [''],
@@ -28,7 +30,8 @@ export class CreateTravelExpenseComponent implements OnInit {
 
 createExpense(){
   const travelexpense: TravelExpense = this.expenseForm.value;
-  this.travelexpenseService.createTravelExpense(travelexpense).subscribe();
+  travelexpense.id = null;
+  this.travelexpenseService.createTravelExpense(travelexpense).subscribe(travelexpense => this.travelExpenseList.push(travelexpense));
  }
 
 }
