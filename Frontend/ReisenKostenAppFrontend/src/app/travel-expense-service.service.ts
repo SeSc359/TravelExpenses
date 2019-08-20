@@ -14,9 +14,6 @@ export class TravelExpenseServiceService {
     return this.http.get<TravelExpense[]>('http://localhost:8080/index');
   }
 
-  getTravelExpenseByStatus(){
-    return this.http.get<TravelExpense[]>('http://localhost:8080/index');
-  }
 
   getTravelExpenseById(id:number) : Observable<TravelExpense>{
       return this.http.get<TravelExpense>("http://localhost:8080/index/" + id);

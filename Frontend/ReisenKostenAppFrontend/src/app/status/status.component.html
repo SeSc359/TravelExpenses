@@ -9,8 +9,8 @@
         
       </tr>
     </thead>
-    <tbody>
-      <tr *ngIf="travelexpense" *ngFor ="let travelexpense of travelexpenseList">
+    <tbody *ngIf="travelexpense">
+      <tr *ngFor ="let travelexpense of travelexpenseList">
         
         <td scope="col">{{travelexpense.id}}</td>
         <td scope="col">{{travelexpense.month}}</td>
