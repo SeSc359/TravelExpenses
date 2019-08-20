@@ -1,21 +1,11 @@
 package com.travelexpanses.entities;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -51,15 +41,14 @@ public class TravelExpense {
 	@Column(name = "status")
 	private boolean status; // false = inProgress, true = Done.
 
-	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
-	@JsonBackReference
-	private List<Attachment> attachments;
+//	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
+//	@JsonBackReference
+//	private List<Attachment> attachments;
 
-	@ManyToMany
-	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-	@JsonManagedReference
-
-	private List<Tag> tags;
+//	@ManyToMany
+//	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+//	@JsonManagedReference
+//	private List<Tag> tags;
 
 	// Constructor
 	public TravelExpense(Integer staffNumber, String month, Integer year, double costs, boolean status) {

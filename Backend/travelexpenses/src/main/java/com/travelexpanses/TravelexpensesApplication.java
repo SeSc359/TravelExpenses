@@ -8,9 +8,7 @@ public class TravelexpensesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TravelexpensesApplication.class, args);
-//
-//		MockDatabase mockDatabase = new MockDatabase();
-//		mockDatabase.createExpenses();
+
 	}
 
 }

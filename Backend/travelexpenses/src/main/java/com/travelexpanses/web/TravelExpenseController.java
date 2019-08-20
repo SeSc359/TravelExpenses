@@ -18,7 +18,7 @@ import com.travelexpanses.entities.TravelExpense;
 import com.travelexpanses.repository.TravelExpenseRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("travelexpense")
+@RequestMapping("/travelexpense")
 @RestController
 public class TravelExpenseController {
 
@@ -41,7 +41,7 @@ public class TravelExpenseController {
 	}
 
 	@PostMapping("/save")
-	public TravelExpense insertNewTravelExpense(@Valid @RequestBody TravelExpense trex) {
+	public TravelExpense insertNewTravelExpense(@RequestBody @Valid TravelExpense trex) {
 		trex.setId(null);
 		return trexRepo.save(trex);
 	}

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TravelExpenseServiceService {
-  travelExpenseList:TravelExpense[];
+  travelExpenseList: TravelExpense[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -23,9 +23,9 @@ export class TravelExpenseServiceService {
     return this.http.delete<TravelExpense>("http://localhost:8080/travelexpense/index/" + id);
   }
 
-  createTravelExpense(travelExpense :TravelExpense){
+  createTravelExpense(travelExpense :TravelExpense): Observable<TravelExpense>{
     const httpOptions = {
-      headers : new HttpHeaders({'Content-type':'application/json'}),
+      headers : new HttpHeaders({'Content-Type':'application/json'})
    };
     return this.http.post<TravelExpense>("http://localhost:8080/travelexpense/save", travelExpense, httpOptions);
  }
