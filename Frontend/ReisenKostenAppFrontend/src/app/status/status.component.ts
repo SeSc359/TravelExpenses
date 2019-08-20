@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./status.component.css']
 })
 export class StatusComponent implements OnInit {
-  // expenselist:Expense[];
+  
 
   statuscolor='red';
   travelExpenseList: TravelExpense[];
