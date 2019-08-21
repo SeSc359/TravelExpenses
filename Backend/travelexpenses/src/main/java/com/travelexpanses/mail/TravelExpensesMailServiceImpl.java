@@ -67,13 +67,16 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 			List<Attachment> attachmentList = travelExpense.getAttachments();
 			for (Attachment attachment : attachmentList) {
 //				FileSystemResource file = new FileSystemResource(new File(attachment.getFilepath()));
-				FileSystemResource file = new FileSystemResource(
-						new File("C:/Users/YGAdmin/Desktop/MailAttachments/nope.jpg"));
+
 //				byte[] attachmentData = attachment.getFile();
 //				ByteArrayDataSource data = new ByteArrayDataSource(attachmentData, "image/jpeg");
 				// TODO insert generated attachment title
-				helper.addAttachment(attachment.getFilename(), file);
+
+//				helper.addAttachment(attachment.getFilename(), file);
 			}
+			FileSystemResource file = new FileSystemResource(
+					new File("C:/Users/YGAdmin/Desktop/MailAttachments/nope.jpg"));
+			helper.addAttachment("yes.jpg", file);
 
 			emailSender.send(message);
 
