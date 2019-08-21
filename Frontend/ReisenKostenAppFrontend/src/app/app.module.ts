@@ -9,6 +9,7 @@ import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelex
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HomeComponent } from './home/home.component';
     CreateTravelExpenseComponent,
     PastTravelExpensesComponent,
     HomeComponent,
+    TravelExpensesDetailComponent,
 
   ],
   imports: [
