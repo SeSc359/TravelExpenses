@@ -1,3 +1,4 @@
+import { TravelExpenseServiceService } from './../travel-expense-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./status.component.css']
 })
 export class StatusComponent implements OnInit {
+  
 
-  constructor() { }
+  statuscolor='red';
+  travelExpenseList: TravelExpense[];
+  travelExpense: TravelExpense;
+
+  constructor(private travelExpenseService: TravelExpenseServiceService) { }
 
   ngOnInit() {
+    this.travelExpenseService.getTravelExpenseList().subscribe(travelExpenses=>(this.travelExpenseList = travelExpenses));
   }
+
+  statusChange() {
+      this.statuscolor = "yellow";
+  }
+
+  
+  delete(){
+    const id = this.travelExpenseList.indexOf(this.travelExpense);
+    this.travelExpenseList.splice(id, 1);
+    this.travelExpense.status=true;
+}
+  
+  
+
+  
+
 
 }

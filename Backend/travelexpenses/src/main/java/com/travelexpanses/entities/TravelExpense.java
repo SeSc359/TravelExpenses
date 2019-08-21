@@ -1,24 +1,15 @@
 package com.travelexpanses.entities;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
+//@NoArgsConstructor
 @Data
 @Table(name = "travelExpenses")
 @Entity
@@ -30,7 +21,7 @@ public class TravelExpense {
 	private Long id;
 
 	@Column(name = "staffNumber")
-	private Long staffNumber;
+	private Integer staffNumber;
 
 //	@Column(name = "destination")
 //	private String destination;
@@ -39,7 +30,7 @@ public class TravelExpense {
 	private String month;
 
 	@Column(name = "year")
-	private Long year;
+	private Integer year;
 
 //	@Column(name = "distance")
 //	private double distance;
@@ -47,14 +38,26 @@ public class TravelExpense {
 	@Column(name = "costs")
 	private double costs;
 
-	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
-	@JsonBackReference
-	private List<Attachment> attachments;
+	@Column(name = "status")
+	private boolean status; // false = inProgress, true = Done.
 
-	@ManyToMany
-	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-	@JsonManagedReference
+//	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
+//	@JsonBackReference
+//	private List<Attachment> attachments;
 
-	private List<Tag> tags;
+//	@ManyToMany
+//	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+//	@JsonManagedReference
+//	private List<Tag> tags;
+
+	// Constructor
+	public TravelExpense(Integer staffNumber, String month, Integer year, double costs, boolean status) {
+		super();
+		this.staffNumber = staffNumber;
+		this.month = month;
+		this.year = year;
+		this.costs = costs;
+		this.status = status;
+	}
 
 }

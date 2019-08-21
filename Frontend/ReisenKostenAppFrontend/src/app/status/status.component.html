@@ -1,1 +1,25 @@
-<p>status works!</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Monat</th>
+            <th scope="col">Jahr</th>
+            <th scope="col">Betrag</th>
+            <th scope="col">Stauts</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let travelExpense of travelExpenseList">
+
+            <td scope="col">{{travelExpense.id}}</td>
+            <td scope="col">{{travelExpense.month}}</td>
+            <td scope="col">{{travelExpense.year}}</td>
+            <td scope="col">{{travelExpense.costs}}</td>
+            <td scope="col" [ngStyle]="{backgroundColor: statuscolor}"></td>
+            <td><button (click)="statusChange()">im process</button></td>
+            <td><button (click)="delete()">ausgezahlt</button></td>
+
+        </tr>
+    </tbody>
+</table>

@@ -1,4 +1,4 @@
-package com.travelexpanses.demo;
+package com.travelexpanses;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +8,7 @@ public class TravelexpensesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TravelexpensesApplication.class, args);
+
 	}
 
 }
