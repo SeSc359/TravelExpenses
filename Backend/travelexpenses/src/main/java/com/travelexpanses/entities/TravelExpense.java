@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-//@NoArgsConstructor
 @Data
 @Table(name = "travelExpenses")
 @Entity
@@ -23,17 +22,11 @@ public class TravelExpense {
 	@Column(name = "staffNumber")
 	private Integer staffNumber;
 
-//	@Column(name = "destination")
-//	private String destination;
-
 	@Column(name = "month")
 	private String month;
 
 	@Column(name = "year")
 	private Integer year;
-
-//	@Column(name = "distance")
-//	private double distance;
 
 	@Column(name = "costs")
 	private double costs;
@@ -45,10 +38,7 @@ public class TravelExpense {
 //	@JsonBackReference
 //	private List<Attachment> attachments;
 
-//	@ManyToMany
-//	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-//	@JsonManagedReference
-//	private List<Tag> tags;
+
 
 	// Constructor
 	public TravelExpense() {
