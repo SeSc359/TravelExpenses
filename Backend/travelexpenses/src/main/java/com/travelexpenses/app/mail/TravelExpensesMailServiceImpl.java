@@ -1,14 +1,15 @@
 package com.travelexpenses.app.mail;
 
+import java.io.File;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import javax.mail.util.ByteArrayDataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -65,10 +66,13 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 
 			List<Attachment> attachmentList = travelExpense.getAttachments();
 			for (Attachment attachment : attachmentList) {
-				byte[] attachmentData = attachment.getFile();
-				ByteArrayDataSource data = new ByteArrayDataSource(attachmentData, "image/jpeg");
+//				FileSystemResource file = new FileSystemResource(new File(attachment.getFilepath()));
+				FileSystemResource file = new FileSystemResource(
+						new File("C:/Users/YGAdmin/Desktop/MailAttachments/nope.jpg"));
+//				byte[] attachmentData = attachment.getFile();
+//				ByteArrayDataSource data = new ByteArrayDataSource(attachmentData, "image/jpeg");
 				// TODO insert generated attachment title
-				helper.addAttachment("invoice.jpg", data);
+				helper.addAttachment(attachment.getFilename(), file);
 			}
 
 			emailSender.send(message);

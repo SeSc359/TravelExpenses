@@ -1,6 +1,5 @@
 package com.travelexpenses.app.web;
 
-import java.util.Base64;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -15,13 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travelexpenses.app.entities.Attachment;
-import com.travelexpenses.app.entities.InsertAttachmentDto;
 import com.travelexpenses.app.entities.TravelExpense;
 import com.travelexpenses.app.mail.TravelExpensesMailServiceImpl;
 import com.travelexpenses.app.repository.AttachmentRepository;
 import com.travelexpenses.app.repository.TravelExpenseRepository;
 
-@RequestMapping(path = "/travelexpenses")
+@RequestMapping(path = "/travelexpense")
 @RestController
 public class TravelExpenseController {
 
@@ -54,20 +52,17 @@ public class TravelExpenseController {
 		}
 	}
 
-	@PostMapping("/save/trex")
+	@PostMapping("/trex")
 	public TravelExpense insertNewTravelExpense(@Valid @RequestBody TravelExpense trex) {
 		trex.setId(null);
 		return trexRepo.save(trex);
 	}
 
 // TODO transmit TrEx-Id for attachments
-	@PostMapping("/save/attachment")
-	public Attachment insertAttachments(@RequestBody InsertAttachmentDto attachmentDto) {
-		Attachment attachment = new Attachment();
+	@PostMapping("/attachment")
+	public Attachment insertAttachments(@RequestBody Attachment attachment) {
 		attachment.setId(null);
-		attachment.setFile(Base64.getDecoder().decode(attachmentDto.dataString));
-		attachment.setFilename(attachmentDto.getFilename());
-
+//		attachment.setFile(Base64.getDecoder().decode(attachment.dataString));
 		return attachmentRepo.save(attachment);
 	}
 

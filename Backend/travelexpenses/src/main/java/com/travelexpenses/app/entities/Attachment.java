@@ -27,6 +27,9 @@ public class Attachment {
 	private String filename;
 
 	@Column
+	private String filepath;
+
+	@Column
 	private String format;
 
 	@Column
@@ -37,7 +40,7 @@ public class Attachment {
 	public byte[] file;
 
 	@ManyToOne()
-	@JoinColumn(name = "attachment_Id")
+	@JoinColumn(name = "travelexpense_Id")
 //	@JsonManagedReference
 	private TravelExpense travelexpense;
 }
