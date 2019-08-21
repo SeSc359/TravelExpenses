@@ -1,35 +1,25 @@
+<p>Eingabeformular. Bitte geben Sie zunächst den Monat und das Jahr für die Abrechnung ein, danach die jeweiligen Einzelposten samt Anhang.
+</p>
 <form [formGroup]="expenseForm" (ngSubmit)="createExpense()">
-
-    <div class="form-group">
+    <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+            <input type="text" class="form-control" placeholder="Monat" formControlName="month">
         </div>
         <div class="col">
-            <label>
-                <input type="text" class="form-control" placeholder="Personalnummer" formControlName="staffNumber">
-            </label>
+            <input type="text" class="form-control" placeholder="Jahr" formControlName="year">
         </div>
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Emailadresse" formControlName="email">
-        </div>
-        <div class="col">
-            <label>
-                <input type="text" class="form-control" placeholder="Monat" formControlName="month">
-            </label>
-        </div>
-        <div class="col">
-            <label>
-                <input type="number" class="form-control" placeholder="Jahr" formControlName="year">
-            </label>
-        </div>
-        <div class="col">
-            <label>
-                <input type="number" class="form-control" placeholder="Betrag" formControlName="costs">
-            </label>
-        </div>
-        <app-uploader-attechment></app-uploader-attechment>
     </div>
+    <br>
+    <app-item-form></app-item-form>
+    <br>
+
+
     <br>
     <!-- <form action="irgendwas@irgendwas.de" method="post" name="Formular" enctype="text/plain"></form> -->
     <button type="submit" value="Abschicken" class="col">Submit</button>
 </form>
+<!-- <div class="col">
+            <label>
+                <input type="number" class="form-control" placeholder="Betrag" formControlName="costs">
+            </label>
+</div> -->

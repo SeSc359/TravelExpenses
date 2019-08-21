@@ -18,12 +18,9 @@ export class CreateTravelExpenseComponent implements OnInit {
 
     this.expenseForm = this.fb.group({
       id: [''],
-      // name: [''],
-      staffNumber: [''],
-      // email: [''],
       month: [''],
       year: [''],
-      costs: [''],
+      // costs: [''],
      status: ['false']
     })
 }

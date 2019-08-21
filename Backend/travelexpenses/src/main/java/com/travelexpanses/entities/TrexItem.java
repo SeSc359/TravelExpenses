@@ -16,8 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Data;
 
 @Data 
@@ -44,7 +42,6 @@ public class TrexItem {
 
 	@ManyToOne()
 	@JoinColumn(name = "travelExpense_Id")
-	@JsonManagedReference
 	private TravelExpense travelExpense;
 
 	@ManyToMany
