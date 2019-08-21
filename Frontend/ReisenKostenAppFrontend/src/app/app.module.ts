@@ -9,6 +9,7 @@ import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelex
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { UploaderAttechmentComponent } from './uploader-attechment/uploader-attechment.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     StatusComponent,
     CreateTravelExpenseComponent,
     PastTravelExpensesComponent,
-    HomeComponent
+    HomeComponent,
+    UploaderAttechmentComponent
 
   ],
   imports: [
