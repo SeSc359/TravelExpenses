@@ -1,4 +1,4 @@
-package com.travelexpenses.app.configuration;
+package com.travelexpanses.configuration;
 
 import java.util.Properties;
 

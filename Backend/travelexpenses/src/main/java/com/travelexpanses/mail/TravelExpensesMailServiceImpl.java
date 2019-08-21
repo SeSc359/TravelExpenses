@@ -1,4 +1,4 @@
-package com.travelexpenses.app.mail;
+package com.travelexpanses.mail;
 
 import java.io.File;
 import java.sql.Date;
@@ -15,8 +15,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import com.travelexpenses.app.entities.Attachment;
-import com.travelexpenses.app.entities.TravelExpense;
+import com.travelexpanses.entities.Attachment;
+import com.travelexpanses.entities.TravelExpense;
 
 @Service
 public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService {

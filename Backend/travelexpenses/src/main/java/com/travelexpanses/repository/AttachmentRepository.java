@@ -1,8 +1,8 @@
-package com.travelexpenses.app.repository;
+package com.travelexpanses.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.travelexpenses.app.entities.Attachment;
+import com.travelexpanses.entities.Attachment;
 
 public interface AttachmentRepository extends CrudRepository<Attachment, Long> {
 

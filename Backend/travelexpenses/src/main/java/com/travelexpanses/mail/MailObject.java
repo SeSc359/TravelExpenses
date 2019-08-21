@@ -1,4 +1,4 @@
-package com.travelexpenses.app.mail;
+package com.travelexpanses.mail;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;

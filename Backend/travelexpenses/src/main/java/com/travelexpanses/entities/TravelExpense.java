@@ -1,4 +1,4 @@
-package com.travelexpenses.app.entities;
+package com.travelexpanses.entities;
 
 import java.util.List;
 

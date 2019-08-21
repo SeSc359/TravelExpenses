@@ -1,4 +1,4 @@
-package com.travelexpenses.app;
+package com.travelexpanses;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

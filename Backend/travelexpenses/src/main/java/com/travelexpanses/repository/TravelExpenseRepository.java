@@ -1,8 +1,8 @@
-package com.travelexpenses.app.repository;
+package com.travelexpanses.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.travelexpenses.app.entities.TravelExpense;
+import com.travelexpanses.entities.TravelExpense;
 
 public interface TravelExpenseRepository extends CrudRepository<TravelExpense, Long> {
 

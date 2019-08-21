@@ -1,4 +1,4 @@
-package com.travelexpenses.app.web;
+package com.travelexpanses.web;
 
 import java.util.Optional;
 
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.travelexpenses.app.entities.Attachment;
-import com.travelexpenses.app.entities.TravelExpense;
-import com.travelexpenses.app.mail.TravelExpensesMailServiceImpl;
-import com.travelexpenses.app.repository.AttachmentRepository;
-import com.travelexpenses.app.repository.TravelExpenseRepository;
+import com.travelexpanses.entities.Attachment;
+import com.travelexpanses.entities.TravelExpense;
+import com.travelexpanses.mail.TravelExpensesMailServiceImpl;
+import com.travelexpanses.repository.AttachmentRepository;
+import com.travelexpanses.repository.TravelExpenseRepository;
 
 @RequestMapping(path = "/travelexpense")
 @RestController

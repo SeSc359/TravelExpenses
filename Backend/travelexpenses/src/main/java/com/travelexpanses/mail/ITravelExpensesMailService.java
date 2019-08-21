@@ -1,8 +1,8 @@
-package com.travelexpenses.app.mail;
+package com.travelexpanses.mail;
 
 import org.springframework.mail.SimpleMailMessage;
 
-import com.travelexpenses.app.entities.TravelExpense;
+import com.travelexpanses.entities.TravelExpense;
 
 public interface ITravelExpensesMailService {
 
