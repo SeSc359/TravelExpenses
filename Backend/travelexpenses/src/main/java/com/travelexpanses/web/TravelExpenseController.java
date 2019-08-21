@@ -14,23 +14,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.travelexpanses.entities.Attachment;
 import com.travelexpanses.entities.TravelExpense;
+import com.travelexpanses.mail.TravelExpensesMailServiceImpl;
+import com.travelexpanses.repository.AttachmentRepository;
 import com.travelexpanses.repository.TravelExpenseRepository;
 
-@CrossOrigin(origins = "localhost:4200")
-@RequestMapping("travelexpense")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/travelexpense")
 @RestController
 public class TravelExpenseController {
 
 	@Autowired
 	TravelExpenseRepository trexRepo;
 
-	@GetMapping("index")
+	@Autowired
+	AttachmentRepository attachmentRepo;
+
+	@Autowired
+	TravelExpensesMailServiceImpl mailService;
+
+	@GetMapping("/connection")
+	public String connectionStatus() {
+		return "Connection Ok.";
+	}
+
+	@GetMapping("/index")
 	public Iterable<TravelExpense> index() {
 		return trexRepo.findAll();
 	}
 
-	@GetMapping("index/{id}")
+	@GetMapping("/index/{id}")
 	public ResponseEntity<TravelExpense> showExpenseById(@PathVariable Long id) {
 		Optional<TravelExpense> pickedExpense = trexRepo.findById(id);
 		if (pickedExpense.isPresent()) {
@@ -41,8 +55,26 @@ public class TravelExpenseController {
 	}
 
 	@PostMapping("/save")
-	public TravelExpense insertNewTravelExpense(@Valid @RequestBody TravelExpense trex) {
+	public TravelExpense insertNewTravelExpense(@RequestBody @Valid TravelExpense trex) {
 		trex.setId(null);
 		return trexRepo.save(trex);
 	}
+
+// TODO transmit TrEx-Id for attachments
+	@PostMapping("/attachment")
+	public Attachment insertAttachments(@RequestBody Attachment attachment) {
+		attachment.setId(null);
+//		attachment.setFile(Base64.getDecoder().decode(attachment.dataString));
+		return attachmentRepo.save(attachment);
+	}
+
+	@GetMapping("/send/{id}")
+	public void sendMailWithAttachment(@PathVariable long id) {
+
+		if (trexRepo.existsById(id)) {
+			TravelExpense trEx = trexRepo.findById(id).get();
+			mailService.sendMessageWithAttachment("hajoklueten@gmail.com", trEx);
+		}
+	}
+
 }

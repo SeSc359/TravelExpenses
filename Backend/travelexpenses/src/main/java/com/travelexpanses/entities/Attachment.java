@@ -12,8 +12,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 
+@Data
 @Table(name = "attachment")
 @Entity
 public class Attachment {
@@ -26,6 +27,9 @@ public class Attachment {
 	private String filename;
 
 	@Column
+	private String filepath;
+
+	@Column
 	private String format;
 
 	@Column
@@ -36,7 +40,7 @@ public class Attachment {
 	public byte[] file;
 
 	@ManyToOne()
-	@JoinColumn(name = "attachment_Id")
-	@JsonManagedReference
+	@JoinColumn(name = "travelexpense_Id")
+//	@JsonManagedReference
 	private TravelExpense travelexpense;
 }
