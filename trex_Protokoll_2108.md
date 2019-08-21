@@ -32,5 +32,5 @@
 # Prashant: Detailansicht, Projektmanagementzeugs
 # Sebastian: 1. Mailservice integrieren 
 # Yinjue: Anhangformular, Sequenzdigramm
-# Lukas: Entity EInzelposten, Form Einzelposten, ER-Digramm, Text auf Oberfläche.
+# Lukas: Entity Einzelposten, Form Einzelposten, ER-Digramm, Text auf Oberfläche.
 
