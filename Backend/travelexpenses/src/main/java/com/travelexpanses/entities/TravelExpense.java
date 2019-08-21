@@ -51,6 +51,9 @@ public class TravelExpense {
 //	private List<Tag> tags;
 
 	// Constructor
+	public TravelExpense() {
+	}
+
 	public TravelExpense(Integer staffNumber, String month, Integer year, double costs, boolean status) {
 		super();
 		this.staffNumber = staffNumber;

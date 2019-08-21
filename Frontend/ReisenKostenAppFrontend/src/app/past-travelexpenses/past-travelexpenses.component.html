@@ -1,19 +1,21 @@
+<h2>Ihre vergangenen Abrechnungen für + firstname + lastname + personalnummer</h2>
+
 <table class="table">
-        <thead class="thead-dark">
-          <tr>
+    <thead class="thead-dark">
+        <tr>
             <th scope="col">#</th>
             <th scope="col">Monat</th>
             <th scope="col">Jahr</th>
             <th scope="col">Betrag</th>
-            
+
         </tr>
-        </thead>
-        <tbody  *ngIf="travelExpense && !travelExpense.status" >
-        <tr  *ngFor="let travelexpense of travelExpenseList">
-        <td scope="col">{{travelExpense.id}}</td>
-        <td scope="col">{{travelExpense.month}}</td>
-        <td scope="col">{{travelExpense.year}}</td>
-        <td scope="col">{{travelExpense.costs}}</td>
+    </thead>
+    <tbody *ngFor="let travelExpense of travelExpenseList">
+        <tr *ngIf="!travelExpense.status">
+            <td scope="col">{{travelExpense.id}}</td>
+            <td scope="col">{{travelExpense.month}}</td>
+            <td scope="col">{{travelExpense.year}}</td>
+            <td scope="col">{{travelExpense.costs}}</td>
         </tr>
-        </tbody>
-      </table>
+    </tbody>
+</table>
