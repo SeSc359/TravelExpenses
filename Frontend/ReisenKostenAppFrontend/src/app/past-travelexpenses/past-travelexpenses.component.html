@@ -8,8 +8,8 @@
             
         </tr>
         </thead>
-        <tbody  *ngIf="travelExpense && !travelExpense.status" >
-        <tr  *ngFor="let travelexpense of travelExpenseList">
+        <tbody *ngFor="let travelexpense of travelExpenseList" >
+        <tr   *ngIf="travelExpense.status">
         <td scope="col">{{travelExpense.id}}</td>
         <td scope="col">{{travelExpense.month}}</td>
         <td scope="col">{{travelExpense.year}}</td>
