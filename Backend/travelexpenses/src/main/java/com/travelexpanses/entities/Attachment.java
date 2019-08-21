@@ -9,9 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-
 @Table(name = "attachment")
 @Entity
 public class Attachment {
@@ -31,7 +28,7 @@ public class Attachment {
 //	public byte[] file;
 
 	@ManyToOne()
-	@JoinColumn(name = "attachment_Id")
-	@JsonManagedReference
+	@JoinColumn(name = "travelexpense_Id")
+//	@JsonManagedReference
 	private TravelExpense travelexpense;
 }
