@@ -38,23 +38,8 @@ public class TravelExpense {
 	@Column(name = "status")
 	private boolean status; // false = inProgress, true = Done.
 
-	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
-//	@JsonBackReference
-	private List<Attachment> attachments;
-
-
-
-//	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
-//	@JsonBackReference
-//	private List<Attachment> attachments;
-
-
-
-//	@ManyToMany
-//	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-//	@JsonManagedReference
-//	private List<Tag> tags;
-
+	@OneToMany(mappedBy = "travelExpense", fetch = FetchType.LAZY)
+	private List<TrexItem> trexItemList;
 
 	// Constructor
 	public TravelExpense() {

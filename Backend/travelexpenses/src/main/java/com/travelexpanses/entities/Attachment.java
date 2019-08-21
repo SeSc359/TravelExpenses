@@ -31,7 +31,6 @@ public class Attachment {
 //	public byte[] file;
 
 	@ManyToOne()
-	@JoinColumn(name = "travelexpense_Id")
-//	@JsonManagedReference
-	private TravelExpense travelexpense;
+	@JoinColumn(name = "trexItem_Id")
+	private TrexItem trexItem;
 }
