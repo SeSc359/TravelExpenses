@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,8 @@ import com.travelexpanses.mail.TravelExpensesMailServiceImpl;
 import com.travelexpanses.repository.AttachmentRepository;
 import com.travelexpanses.repository.TravelExpenseRepository;
 
-@RequestMapping(path = "/travelexpense")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/travelexpense")
 @RestController
 public class TravelExpenseController {
 
@@ -52,8 +54,8 @@ public class TravelExpenseController {
 		}
 	}
 
-	@PostMapping("/trex")
-	public TravelExpense insertNewTravelExpense(@Valid @RequestBody TravelExpense trex) {
+	@PostMapping("/save")
+	public TravelExpense insertNewTravelExpense(@RequestBody @Valid TravelExpense trex) {
 		trex.setId(null);
 		return trexRepo.save(trex);
 	}

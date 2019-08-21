@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+//@NoArgsConstructor
 @Data
 @Table(name = "travelExpenses")
 @Entity
@@ -24,7 +25,7 @@ public class TravelExpense {
 	private Long id;
 
 	@Column(name = "staffNumber")
-	private Long staffNumber;
+	private Integer staffNumber;
 
 //	@Column(name = "destination")
 //	private String destination;
@@ -33,7 +34,7 @@ public class TravelExpense {
 	private String month;
 
 	@Column(name = "year")
-	private Long year;
+	private Integer year;
 
 //	@Column(name = "distance")
 //	private double distance;
@@ -45,9 +46,25 @@ public class TravelExpense {
 //	@JsonBackReference
 	private List<Attachment> attachments;
 
+	@Column(name = "status")
+	private boolean status; // false = inProgress, true = Done.
+
 //	@ManyToMany
 //	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
 //	@JsonManagedReference
 //	private List<Tag> tags;
+
+	// Constructor
+	public TravelExpense() {
+	}
+
+	public TravelExpense(Integer staffNumber, String month, Integer year, double costs, boolean status) {
+		super();
+		this.staffNumber = staffNumber;
+		this.month = month;
+		this.year = year;
+		this.costs = costs;
+		this.status = status;
+	}
 
 }
