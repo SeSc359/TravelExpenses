@@ -1,4 +1,4 @@
-package com.travelexpanses.entities;
+package com.travelexpenses.app.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Table(name = "tag")
 @Entity
 public class Tag {

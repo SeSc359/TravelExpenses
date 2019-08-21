@@ -1,4 +1,4 @@
-package com.travelexpanses.entities;
+package com.travelexpenses.app.entities;
 
 import java.util.List;
 
@@ -8,14 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -48,13 +42,12 @@ public class TravelExpense {
 	private double costs;
 
 	@OneToMany(mappedBy = "travelexpense", fetch = FetchType.LAZY)
-	@JsonBackReference
+//	@JsonBackReference
 	private List<Attachment> attachments;
 
-	@ManyToMany
-	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-	@JsonManagedReference
-
-	private List<Tag> tags;
+//	@ManyToMany
+//	@JoinTable(name = "travelexpense_to_tag", joinColumns = @JoinColumn(name = "travelexpense_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+//	@JsonManagedReference
+//	private List<Tag> tags;
 
 }

@@ -1,4 +1,4 @@
-package com.travelexpanses.entities;
+package com.travelexpenses.app.entities;
 
 import java.time.LocalDate;
 
@@ -12,8 +12,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 
+@Data
 @Table(name = "attachment")
 @Entity
 public class Attachment {
@@ -37,6 +38,6 @@ public class Attachment {
 
 	@ManyToOne()
 	@JoinColumn(name = "attachment_Id")
-	@JsonManagedReference
+//	@JsonManagedReference
 	private TravelExpense travelexpense;
 }
