@@ -12,7 +12,7 @@ export class CreateTravelExpenseComponent implements OnInit {
   expenseForm: FormGroup;
   travelExpenseList: TravelExpense[];
 
-  constructor(private fb:FormBuilder,private travelexpenseService: TravelExpenseServiceService) { }
+  constructor(private fb:FormBuilder,private travelExpenseService: TravelExpenseServiceService) { }
 
   ngOnInit() {
 
@@ -29,9 +29,9 @@ export class CreateTravelExpenseComponent implements OnInit {
 }
 
 createExpense(){
-  const travelexpense: TravelExpense = this.expenseForm.value;
-  travelexpense.id = null;
-  this.travelexpenseService.createTravelExpense(travelexpense).subscribe(travelexpense => this.travelExpenseList.push(travelexpense));
+  const travelExpense: TravelExpense = this.expenseForm.value;
+  travelExpense.id = null;
+  this.travelExpenseService.createTravelExpense(travelExpense).subscribe(travelExpense => this.travelExpenseList.push(travelExpense));
  }
 
 }
