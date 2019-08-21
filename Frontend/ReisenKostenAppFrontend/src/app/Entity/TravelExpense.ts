@@ -1,4 +1,3 @@
-
 class TravelExpense{
     id: number;
     staffNumber: number;
