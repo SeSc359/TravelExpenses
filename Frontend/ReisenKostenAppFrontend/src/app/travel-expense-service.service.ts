@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +30,17 @@ export class TravelExpenseServiceService {
    };
     return this.http.post<TravelExpense>("http://localhost:8080/travelexpense/save", travelExpense, httpOptions);
  }
+
+ 
+  OnUploadFile() {
+  
+  const uploadFormData = new FormData();
+
+  // uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+  
+  this.http.post("http://localhost:8080/travelexpense//attachment", uploadFormData);
+  }
+  
 
 }
 

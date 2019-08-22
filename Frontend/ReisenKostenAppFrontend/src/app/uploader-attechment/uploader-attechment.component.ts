@@ -1,3 +1,4 @@
+import { TravelExpenseServiceService } from './../travel-expense-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploaderAttechmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private attachmentservice: TravelExpenseServiceService) { }
 
   ngOnInit() {
   }
+
+  // fileUpload(files){
+    
+  //     console.log('files', files)
+  //         var formData = new FormData();
+  
+  //     for(let i =0; i < files.length; i++){
+  //       formData.append("files", files[i], files[i]['name']);
+  //         }
+  
+  //     this.attachmentservice.OnUploadFile(formData)
+  //       .subscribe((response) => {
+  //         console.log('response', response)
+  //       }
+    
+
+  
+
 
 }
