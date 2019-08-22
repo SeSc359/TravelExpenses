@@ -1,9 +1,7 @@
-import { TravelExpenseService } from './../travel-expense.service';
-
 import { TrexItem } from './../Entity/TrexItem';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-
+import { TravelExpenseService } from '../travel-expense.service';
 
 @Component({
   selector: 'app-item-form',
@@ -35,13 +33,10 @@ export class ItemFormComponent implements OnInit {
 
   createTrexItem(){
     const trexItem: TrexItem = this.itemForm.value;
-<<<<<<< HEAD
     // trexItem.id = null;
     this.travelExpenseService.createTrexItem(trexItem).subscribe(travelItem => this.trexItemList.push(trexItem));
-=======
-    trexItem.id = null;
-    this.travelExpenseService.createTrexItem(trexItem).subscribe(trexItem => this.trexItemList.push(trexItem));
->>>>>>> features_lukas
    }
+
+   
 
 }

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ItemFormComponent } from './item-form/item-form.component';
+import { UploaderAttachmentComponent } from './uploader-attachment/uploader-attachment.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ItemFormComponent } from './item-form/item-form.component';
     CreateTravelExpenseComponent,
     PastTravelExpensesComponent,
     HomeComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    UploaderAttachmentComponent
 
   ],
   imports: [
