@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploaderAttechmentComponent implements OnInit {
 
-  constructor(private attachmentservice: TravelExpenseServiceService) { }
+  constructor() { }
 
   ngOnInit() {
   }
