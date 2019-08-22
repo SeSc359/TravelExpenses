@@ -1,4 +1,4 @@
-<h2>Ihre vergangenen Abrechnungen für + firstname + lastname + personalnummer</h2>
+<h2>Ihre vergangenen Abrechnungen</h2>
 
 <table class="table">
     <thead class="thead-dark">
@@ -7,11 +7,10 @@
             <th scope="col">Monat</th>
             <th scope="col">Jahr</th>
             <th scope="col">Betrag</th>
-
         </tr>
     </thead>
-    <tbody *ngFor="let travelexpense of travelExpenseList">
-        <tr *ngIf="travelExpense.status">
+    <tbody *ngFor="let travelExpense of travelExpenseList">
+        <tr *ngIf="!travelExpense.status" routerLink="../expenselist/{{travelExpense.id}}">
             <td scope="col">{{travelExpense.id}}</td>
             <td scope="col">{{travelExpense.month}}</td>
             <td scope="col">{{travelExpense.year}}</td>

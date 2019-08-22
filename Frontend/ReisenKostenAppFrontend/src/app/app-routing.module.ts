@@ -7,7 +7,8 @@ import { StatusComponent } from './status/status.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
+import { from } from 'rxjs';
+import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'home',pathMatch:'full'},
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'status', component: StatusComponent },
   { path: 'create', component: CreateTravelExpenseComponent},
   { path: 'expenselist', component: PastTravelExpensesComponent },
-
+  { path: 'expenselist/:expenseId', component:TravelExpensesDetailComponent},
 
 ];
 
