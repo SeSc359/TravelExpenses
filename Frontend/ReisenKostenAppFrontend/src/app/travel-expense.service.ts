@@ -43,7 +43,7 @@ export class TravelExpenseService {
     console.log(file);
     let formData = new FormData();
     formData.append('file', file);
-       return this.http.post<File>('{this.url} + attachment', file);  
+       return this.http.put<File>('{this.url} + attachment', file);  
    }
 
 }

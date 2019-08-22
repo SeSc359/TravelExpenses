@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploaderAttachmentComponent implements OnInit {
 
-  files: File[] = [];
+  files: File;
+  formData = FormData
+  
 
   constructor(private travelExpenseService: TravelExpenseService) { }
 
@@ -16,6 +18,6 @@ export class UploaderAttachmentComponent implements OnInit {
   }
   createAttachment() {
   
-  this.travelExpenseService.createAttachment(this.files).subscribe
+  this.travelExpenseService.createAttachment(this.files).subscribe()
   }
 }

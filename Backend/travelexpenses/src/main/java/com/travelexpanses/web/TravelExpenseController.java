@@ -10,13 +10,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.travelexpanses.entities.Attachment;
 import com.travelexpanses.entities.TravelExpense;
 import com.travelexpanses.entities.TrexItem;
 import com.travelexpanses.mail.TravelExpensesMailServiceImpl;
@@ -81,10 +78,10 @@ public class TravelExpenseController {
 //		return attachmentRepo.save(attachment);
 //	}
 
-	@PutMapping("/attachment")
-	public Attachment update(@RequestParam("file"), MultipartFile file) {
-		
-	}
+//	@PutMapping("/attachment")
+//	public Attachment update(@RequestParam("file"), MultipartFile file) {
+//		
+//	}
 
 	@GetMapping("/send/{id}")
 	public void sendMailWithAttachment(@PathVariable long id) {
