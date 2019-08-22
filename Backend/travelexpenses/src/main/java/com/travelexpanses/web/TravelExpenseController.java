@@ -1,18 +1,23 @@
 package com.travelexpanses.web;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.travelexpanses.entities.Attachment;
 import com.travelexpanses.entities.TravelExpense;
@@ -38,11 +43,6 @@ public class TravelExpenseController {
 
 	@Autowired
 	TravelExpensesMailServiceImpl mailService;
-
-	@GetMapping("/connection")
-	public String connectionStatus() {
-		return "Connection Ok.";
-	}
 
 	@GetMapping("/index")
 	public Iterable<TravelExpense> index() {
@@ -71,15 +71,39 @@ public class TravelExpenseController {
 		return itemRepo.save(item);
 	}
 
-// TODO transmit TrEx-Id for attachments
 	@PostMapping("/attachment")
 	public Attachment insertAttachments(@RequestBody Attachment attachment) {
 		attachment.setId(null);
-//		attachment.setFile(Base64.getDecoder().decode(attachment.dataString));
 		return attachmentRepo.save(attachment);
 	}
 
-	@GetMapping("/send/{id}")
+	@PutMapping("/attachment/{id}/file")
+	public ResponseEntity<Attachment> updateFile(@PathVariable long id, @RequestParam("file") MultipartFile file) {
+		if (attachmentRepo.existsById(id)) {
+			Attachment attachmentById = attachmentRepo.findById(id).get();
+			attachmentById.setFileType(file.getContentType());
+			attachmentById.setFileName(file.getOriginalFilename());
+			try {
+				attachmentById.setFile(file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			attachmentRepo.save(attachmentById);
+			return ResponseEntity.ok().build();
+
+		}
+		return ResponseEntity.notFound().build();
+	}
+
+	@GetMapping("/attachment/{id}/file")
+	public ResponseEntity<?> getAttachmentFile(@PathVariable long id) {
+		Optional<Attachment> attachmentById = attachmentRepo.findById(id);
+		return ResponseEntity.ok().contentType(MediaType.parseMediaType(attachmentById.get().getFileType()))
+				.body(attachmentById.get().getFile());
+
+	}
+
+	@PostMapping("/send/{id}")
 	public void sendMailWithAttachment(@PathVariable long id) {
 
 		if (trexRepo.existsById(id)) {
