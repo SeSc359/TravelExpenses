@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { UploaderAttachmentComponent } from './uploader-attachment/uploader-attachment.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 
+import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ItemFormComponent } from './item-form/item-form.component';
     PastTravelExpensesComponent,
     HomeComponent,
     UploaderAttachmentComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    TravelExpensesDetailComponent
 
   ],
   imports: [
