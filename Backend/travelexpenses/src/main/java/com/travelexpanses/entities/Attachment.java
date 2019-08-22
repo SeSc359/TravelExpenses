@@ -1,14 +1,11 @@
 package com.travelexpanses.entities;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,23 +21,16 @@ public class Attachment {
 	private Long id;
 
 	@Column
-	private String filename;
+	private String fileName;
 
 	@Column
-	private String filepath;
+	private String filePath;
 
-	@Column
-	private String format;
-
-	@Column
-	private LocalDate timestamp;
-
-	@Lob
-	@Column(name = "file", columnDefinition = "BLOB")
-	public byte[] file;
+//	@Lob
+//	@Column(name = "file", columnDefinition = "BLOB")
+//	public byte[] file;
 
 	@ManyToOne()
-	@JoinColumn(name = "travelexpense_Id")
-//	@JsonManagedReference
-	private TravelExpense travelexpense;
+	@JoinColumn(name = "trexItem_Id")
+	private TrexItem trexItem;
 }

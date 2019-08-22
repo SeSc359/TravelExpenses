@@ -1,4 +1,4 @@
-class TravelExpense{
+class TravelExpense {
     id: number;
     staffNumber: number;
     name: string;

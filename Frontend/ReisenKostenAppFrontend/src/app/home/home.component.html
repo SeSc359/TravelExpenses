@@ -1,12 +1,22 @@
 <h1>Willkommen bei TreX!</h1>
 <br>
 <div>
-<p> Bei uns können Sie ihre Reisekostenabrechnung schnell per Mail versenden,
-    ihren aktuellen Status einsehen und die vergangenen Abrechnungen einsehen.</p>
+    <p> Bei uns können Sie ihre Reisekostenabrechnung schnell per Mail versenden, ihren aktuellen Status einsehen und die vergangenen Abrechnungen einsehen.</p>
 </div>
 
-<div>
-<h5 routerLink="../create">Jetzt eine neue Monatsabrechnung erstellen und versenden</h5>
-<h5 routerLink="../status">Dein Status der aktuellen Abrechnung</h5>
-<h5 routerLink="../expenselist">Schau Dir deine vergangenen Abrechnungen an!</h5>
+<div class="col" >
+    <input type="text" class="form-control" placeholder="Name" formControlName="name">
 </div>
+<div class="col" >
+    <label>
+        <input type="text" class="form-control" placeholder="Personalnummer" formControlName="staffNumber">
+    </label>
+</div>
+<div class="col" >
+    <input type="text" class="form-control" placeholder="Emailadresse" formControlName="email">
+</div>
+
+ 
+   <div style ="float: left; width: 15em; height: 15em;"> <h5  routerLink="../create">Jetzt eine neue Monatsabrechnung erstellen und versenden</h5></div>
+   <div style ="float: left;width: 15em; height: 15em; "><h5 routerLink="../status">Dein Status der aktuellen Abrechnung</h5></div>
+   <div style ="float: left;width: 15em; height: 15em; "><h5 routerLink="../expenselist">Schau Dir deine vergangenen Abrechnungen an!</h5></div>

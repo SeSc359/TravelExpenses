@@ -1,0 +1,49 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Monat</th>
+            <th scope="col">Jahr</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let travelExpense of travelExpenseList">
+            <td scope="col">{{travelExpense.id}}</td>
+            <td scope="col">{{travelExpense.month}}</td>
+            <td scope="col">{{travelExpense.year}}</td> 
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!isCreating">
+    <button (click)="openForm()">open the form to upload</button>
+</div>
+    
+<div *ngIf="isCreating">
+<form [formGroup]="itemForm" (ngSubmit)="createTrexItem()">
+    <fieldset>
+    <div class="col">
+        <input type="date" class="form-control" placeholder="Datum" formControlName="date">
+    </div>
+    <div class="col">
+        <input type="text" class="form-control" placeholder="Beschreibung" formControlName="description">
+    </div>
+    <div class="col">
+        <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
+    </div>
+    
+    <div class="col">
+        <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigen Namen!)</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple>
+        
+    </div>
+    <button >Remove</button>
+    
+</fieldset>
+<button >Add</button>  
+
+
+</form>
+<button type="submit" value="Upload" class="col"><span class="glyphicon glyphicon-upload"></span> Upload</button>
+</div>
