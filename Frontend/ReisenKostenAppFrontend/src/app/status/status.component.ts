@@ -1,4 +1,6 @@
-import { TravelExpenseServiceService } from './../travel-expense-service.service';
+import { TravelExpenseService } from './../travel-expense.service';
+
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +15,7 @@ export class StatusComponent implements OnInit {
   travelExpenseList: TravelExpense[];
   travelExpense: TravelExpense;
 
-  constructor(private travelExpenseService: TravelExpenseServiceService) { }
+  constructor(private travelExpenseService: TravelExpenseService) { }
 
   ngOnInit() {
     this.travelExpenseService.getTravelExpenseList().subscribe(travelExpenses=>(this.travelExpenseList = travelExpenses));

@@ -1,5 +1,6 @@
+import { TravelExpenseService } from './../travel-expense.service';
+
 import { Component, OnInit } from '@angular/core';
-import { TravelExpenseServiceService } from '../travel-expense-service.service';
 
 @Component({
   selector: 'app-past-travel-expensens',
@@ -9,7 +10,7 @@ import { TravelExpenseServiceService } from '../travel-expense-service.service';
 export class PastTravelExpensesComponent implements OnInit {
   travelExpenseList: TravelExpense[];
 
-  constructor(private travelExpenseService: TravelExpenseServiceService) { }
+  constructor(private travelExpenseService: TravelExpenseService) { }
 
   ngOnInit() {
    
