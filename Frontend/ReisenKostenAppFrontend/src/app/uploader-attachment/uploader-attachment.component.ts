@@ -1,3 +1,4 @@
+import { TravelExpenseService } from './../travel-expense.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploaderAttachmentComponent implements OnInit {
 
-  constructor() { }
+  files: File[] = [];
+
+  constructor(private travelExpenseService: TravelExpenseService) { }
 
   ngOnInit() {
   }
-
+  createAttachment() {
+  
+  this.travelExpenseService.createAttachment(this.files).subscribe
+  }
 }

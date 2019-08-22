@@ -1,4 +1,5 @@
-import { TravelExpenseServiceService } from './../travel-expense-service.service';
+import { TravelExpenseService } from './../travel-expense.service';
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
@@ -12,7 +13,7 @@ export class CreateTravelExpenseComponent implements OnInit {
   expenseForm: FormGroup;
   travelExpenseList: TravelExpense[];
 
-  constructor(private fb:FormBuilder,private travelExpenseService: TravelExpenseServiceService) { }
+  constructor(private fb:FormBuilder, private travelExpenseService: TravelExpenseService) { }
 
   ngOnInit() {
 

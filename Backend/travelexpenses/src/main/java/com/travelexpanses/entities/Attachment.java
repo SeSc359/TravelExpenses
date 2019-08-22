@@ -6,8 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -23,12 +26,13 @@ public class Attachment {
 	@Column
 	private String fileName;
 
-	@Column
-	private String filePath;
+//	@Column
+//	private String filePath;
 
-//	@Lob
-//	@Column(name = "file", columnDefinition = "BLOB")
-//	public byte[] file;
+	@Lob
+	@JsonIgnore
+	@Column(name = "file", columnDefinition = "BLOB")
+	private byte[] file;
 
 	@ManyToOne()
 	@JoinColumn(name = "trexItem_Id")
