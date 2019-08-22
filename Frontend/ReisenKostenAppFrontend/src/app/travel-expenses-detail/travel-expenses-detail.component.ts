@@ -8,12 +8,12 @@ import { TravelExpenseServiceService } from '../travel-expense-service.service';
   styleUrls: ['./travel-expenses-detail.component.css']
 })
 export class TravelExpensesDetailComponent implements OnInit {
-  travelExpenses: TravelExpense;  
+  travelExpense: TravelExpense;  
 
   constructor(private travelExpenseServiceService: TravelExpenseServiceService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('travelExpensesId');
-    this.travelExpenseServiceService.getTravelExpenseById(id).subscribe(travelExpenses=>(this.travelExpenses = travelExpenses));
+    const id = +this.route.snapshot.paramMap.get('expenseId');
+    this.travelExpenseServiceService.getTravelExpenseById(id).subscribe(travelExpense=>(this.travelExpense = travelExpense));
   }
 }

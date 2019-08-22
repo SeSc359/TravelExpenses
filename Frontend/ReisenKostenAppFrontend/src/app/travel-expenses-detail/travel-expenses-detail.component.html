@@ -1,13 +1,16 @@
-
-<div class="card">
-    <img class="card-img-top" src="{{ travelexpenses.imgUrl }}" alt="Card image cap" />
+<div *ngIf="travelExpense">
+  Monat: {{ travelExpense.month }} <br>
+  Jahr: {{ travelExpense.year }} <br />
+  Betrag: {{ travelExpense.costs }}
+  <div class="card">
+    <img class="card-img-top" src="" alt="image of expense receipt" />
     <div class="card-body">
-      <h5 class="card-title">{{ travelexpenses.id }}</h5>
+      <h5 class="card-title">item title?</h5>
       <p class="card-text">
-        Monat: {{ Monat }} <br>
-        Jahr: {{ Jahr }} <br />
-        Betrag: {{ Betrag }}
+        item details
       </p>
     </div>
+
+    
   </div>
-  
+</div>

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'status', component: StatusComponent },
   { path: 'create', component: CreateTravelExpenseComponent},
   { path: 'expenselist', component: PastTravelExpensesComponent },
-  { path: 'travelExpensesDetail/:expensesId', component:TravelExpensesDetailComponent},
+  { path: 'expenselist/:expenseId', component:TravelExpensesDetailComponent},
 
 ];
 
