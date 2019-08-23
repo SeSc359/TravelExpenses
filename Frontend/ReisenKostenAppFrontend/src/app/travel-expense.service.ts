@@ -8,9 +8,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TravelExpenseService {
-  travelExpenseList: TravelExpense[] = [];
 
-  url: string = "'http://localhost:8080/travelexpense/";
+  travelExpenseList: TravelExpense[] = [];
+ 
+
+  url: string = "http://localhost:8080/travelexpense/";
 
   constructor(private http: HttpClient) { }
 
@@ -40,11 +42,11 @@ export class TravelExpenseService {
     return this.http.post<Item>("{this.url} + saveItem", item, httpOptions);
   }
 
-  createAttachment({ ItemId, file }): Observable<any> { 
+  createAttachment(item: Item, file: File): Observable<any> { 
     console.log(file);
     let formData = new FormData();
     formData.append('file', file);
-       return this.http.put<File>('{this.url} + attachment', file);  
+       return this.http.post<File>(this.url + item.id + 'attachment', file);  
    }
 
 }
