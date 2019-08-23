@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TravelExpenseServiceService } from '../travel-expense-service.service';
+import { TravelExpenseService } from '../travel-expense.service';
 
 @Component({
   selector: 'app-travel-expenses-detail',
@@ -10,10 +10,10 @@ import { TravelExpenseServiceService } from '../travel-expense-service.service';
 export class TravelExpensesDetailComponent implements OnInit {
   travelExpense: TravelExpense;  
 
-  constructor(private travelExpenseServiceService: TravelExpenseServiceService, private route: ActivatedRoute) { }
+  constructor(private travelExpenseService: TravelExpenseService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('expenseId');
-    this.travelExpenseServiceService.getTravelExpenseById(id).subscribe(travelExpense=>(this.travelExpense = travelExpense));
+    this.travelExpenseService.getTravelExpenseById(id).subscribe(travelExpense=>(this.travelExpense = travelExpense));
   }
 }
