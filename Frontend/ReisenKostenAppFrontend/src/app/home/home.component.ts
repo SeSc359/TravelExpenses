@@ -8,15 +8,16 @@ import {FormArray, FormControl, FormGroup} from "@angular/forms";
 })
 export class HomeComponent implements OnInit {
 
-  personalForm: FormGroup = new FormGroup({
+  constructor() { }
+  
+  personalForm = new FormGroup({
     name: new FormControl(''),
     staffNumber: new FormControl(''),
-    emailr: new FormControl('')
+    email: new FormControl('')
   });
- 
-  constructor() { }
 
   ngOnInit() {
+    
    
   }
 

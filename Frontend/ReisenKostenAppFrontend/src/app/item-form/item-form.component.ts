@@ -54,10 +54,10 @@ handleAddItem() {
   this.Items.push(this.createItem());
 }
 
-handleRemoveItem(i:number) {
-  this.Items = this.itemForm.get('Items') as FormArray;
-  this.Items.removeAt(i);
-}
+// handleRemoveItem(i:number) {
+//   this.Items = this.itemForm.get('Items') as FormArray;
+//   this.Items.removeAt(i);
+// }
 
   //  createItem(){
   //   const Item: Item = this.itemForm.value;
