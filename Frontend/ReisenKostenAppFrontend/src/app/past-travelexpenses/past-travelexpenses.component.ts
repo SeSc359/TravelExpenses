@@ -14,7 +14,7 @@ export class PastTravelExpensesComponent implements OnInit {
 
   ngOnInit() {
    
-    this.travelExpenseService.getTravelExpenseList().subscribe(travelExpenses=>(this.travelExpenseList = travelExpenses));
+    this. travelExpenseService.getTravelExpenseList().subscribe(travelExpenses=>(this.travelExpenseList = travelExpenses));
   }
   }
 

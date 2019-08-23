@@ -1,33 +1,53 @@
-<p>Einzelposten: </p>
-<form [formGroup]="itemForm" (ngSubmit)="createItem()">
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Monat</th>
+            <th scope="col">Jahr</th>
 
-    <div class="col">
-        <input type="date" class="form-control" placeholder="Datum" formControlName="date">
-    </div>
-    <div class="col">
-        <input type="text" class="form-control" placeholder="Beschreibung" formControlName="description">
-    </div>
-    <div class="col">
-        <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
-    </div>
-    <button type="submit" value="Abschicken" class="col">Einzelposten hinzufügen</button>
-</form>
-<div class="col">
-    <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigen Namen!)</label>
-    <input type="file" class="form-control-file" ngfSelect type="file" [(files)]="files" [maxSize]="100000" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let travelExpense of travelExpenseList">
+            <td scope="col" *ngIf="!isCreating" (click)="openForm()">{{travelExpense.id}}</td>
+            <td scope="col">{{travelExpense.month}}</td>
+            <td scope="col">{{travelExpense.year}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!isCreating">
+    <button (click)="openForm()">open the form to upload</button>
 </div>
-<!-- <div class="col">
-    <input ngfSelect multiple type="file" accept="image/*" [(files)]="files" maxSize="10240" />
-    <button *ngIf="files" (click)="uploadFiles(files)">Upload</button>
-</div>
-<div>
-    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-        <div>
-            <input type="file" name="profile" (change)="onFileSelect($event)" />
-        </div>
-        <div>
-            <button type="submit">Upload</button>
-        </div>
+
+<div *ngIf="isCreating">
+
+    <form [formGroup]="itemForm" (ngSubmit)="handleSubmit($event)">
+        <fieldset>
+            <div formGroupName="Items" *ngFor="let Item of itemForm.get('Items').controls; let i = index;">
+
+                <fieldset [formGroupName]="i">
+                    <div class="col">
+                        <input type="date" class="form-control" placeholder="Datum" formControlName="date">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Beschreibung" formControlName="description">
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
+                    </div>
+                    <div class="col">
+                        <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigen Namen!)</label>
+                        <input type="file" class="form-control-file" ngfSelect [(files)]="files" />
+                        <!-- <button (click)="handleRemoveItem(i)">Remove</button> -->
+                    </div>
+                </fieldset>
+            </div>
+            <button (click)="handleAddItem()">Add</button>
+
+            <button type="submit" value="Upload" class="col"><span class="glyphicon glyphicon-upload" (click)="uploadFileToActivity()" ></span> Upload</button>
+            <button type="submit">submit</button>
+        </fieldset>
+
     </form>
 </div>
-</div> -->

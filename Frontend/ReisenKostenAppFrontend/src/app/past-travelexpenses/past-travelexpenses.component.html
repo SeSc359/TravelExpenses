@@ -8,13 +8,15 @@
             <th scope="col">Jahr</th>
             <th scope="col">Betrag</th>
         </tr>
+
     </thead>
     <tbody *ngFor="let travelExpense of travelExpenseList">
-        <tr *ngIf="!travelExpense.status" routerLink="../expenselist/{{travelExpense.id}}">
+        <tr *ngIf="travelExpense.status==true" routerLink="../expenselist/{{travelExpense.id}}">
             <td scope="col">{{travelExpense.id}}</td>
             <td scope="col">{{travelExpense.month}}</td>
             <td scope="col">{{travelExpense.year}}</td>
             <td scope="col">{{travelExpense.costs}}</td>
+
         </tr>
     </tbody>
 </table>

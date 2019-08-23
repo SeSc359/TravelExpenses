@@ -3,9 +3,11 @@
 <div>
     <p> Bei uns können Sie ihre Reisekostenabrechnung schnell per Mail versenden, ihren aktuellen Status einsehen und die vergangenen Abrechnungen einsehen.</p>
 </div>
-
+<form [formGroup]="personalForm">
 <div class="col" >
+        <label>
     <input type="text" class="form-control" placeholder="Name" formControlName="name">
+</label>
 </div>
 <div class="col" >
     <label>
@@ -13,9 +15,11 @@
     </label>
 </div>
 <div class="col" >
+        <label>
     <input type="text" class="form-control" placeholder="Emailadresse" formControlName="email">
+</label>
 </div>
-
+</form>
  
    <div style ="float: left; width: 15em; height: 15em;"> <h5  routerLink="../create">Jetzt eine neue Monatsabrechnung erstellen und versenden</h5></div>
    <div style ="float: left;width: 15em; height: 15em; "><h5 routerLink="../status">Dein Status der aktuellen Abrechnung</h5></div>

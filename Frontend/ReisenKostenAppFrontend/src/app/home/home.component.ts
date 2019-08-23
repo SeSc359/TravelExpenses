@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor() { }
+  
+  personalForm = new FormGroup({
+    name: new FormControl(''),
+    staffNumber: new FormControl(''),
+    email: new FormControl('')
+  });
 
   ngOnInit() {
+    
+   
   }
 
 }
