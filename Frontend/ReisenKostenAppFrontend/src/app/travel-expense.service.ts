@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class TravelExpenseService {
   travelExpenseList: TravelExpense[] = [];
 
-  url: string = "'http://localhost:8080/travelexpense/";
+  url: string = "http://localhost:8080/travelexpense/";
 
   constructor(private http: HttpClient) { }
 

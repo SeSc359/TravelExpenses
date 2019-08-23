@@ -26,12 +26,12 @@ public class Attachment {
 	@Column
 	private String fileName;
 
-//	@Column
-//	private String filePath;
+	@Column
+	private String fileType;
 
 	@Lob
-	@JsonIgnore
 	@Column(name = "file", columnDefinition = "BLOB")
+	@JsonIgnore
 	private byte[] file;
 
 	@ManyToOne()

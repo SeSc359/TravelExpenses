@@ -36,6 +36,26 @@ export class ItemFormComponent implements OnInit {
     // trexItem.id = null;
     this.travelExpenseService.createTrexItem(trexItem).subscribe(travelItem => this.trexItemList.push(trexItem));
    }
+   files: File[];
+  
+   file: File;
+  
+   error: string
+ 
+   
+ 
+   handleFileInput(files: FileList) {
+      this.file = files.item(0);
+  }
+ 
+   uploadFileToActivity() {
+     
+    this.travelExpenseService.createAttachment(this.file).subscribe((response) => {
+       console.log('response', response)
+     }, error => {
+       console.log(error);
+     });
+ }
 
    
 
