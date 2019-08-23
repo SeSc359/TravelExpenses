@@ -30,9 +30,9 @@ export class ItemFormComponent implements OnInit {
   }
 
   createItem(){
-    const Item: Item = this.itemForm.value;
-    Item.id = null;
-    this.travelExpenseService.createItem(Item).subscribe(Item => this.ItemList.push(Item));
+    const item: Item = this.itemForm.value;
+    item.id = null;
+    this.travelExpenseService.createItem(item).subscribe(item => this.ItemList.push(item));
    }
 
 }

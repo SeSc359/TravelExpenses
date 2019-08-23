@@ -19,11 +19,11 @@ export class TravelExpenseService {
   }
 
   getTravelExpenseById(id: number): Observable<TravelExpense> {
-    return this.http.get<TravelExpense>("{this.url} + index/" + id);
+    return this.http.get<TravelExpense>("{this.url} + index" + id);
   }
 
   deleteTravelExpenseById(id: number): Observable<TravelExpense> {
-    return this.http.delete<TravelExpense>("{this.url} + index/" + id);
+    return this.http.delete<TravelExpense>("{this.url} + index" + id);
   }
 
   createTravelExpense(travelExpense: TravelExpense): Observable<TravelExpense> {
@@ -33,14 +33,14 @@ export class TravelExpenseService {
     return this.http.post<TravelExpense>("{this.url} + saveExpense", travelExpense, httpOptions);
   }
 
-  createItem(Item: Item): Observable<Item> {
+  createItem(item: Item): Observable<Item> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post<Item>("{this.url} + saveItem", Item, httpOptions);
+    return this.http.post<Item>("{this.url} + saveItem", item, httpOptions);
   }
 
-  createAttachment({ ItemId, file }: { ItemId: number; file: File; }): Observable<any> { 
+  createAttachment({ ItemId, file }): Observable<any> { 
     console.log(file);
     let formData = new FormData();
     formData.append('file', file);

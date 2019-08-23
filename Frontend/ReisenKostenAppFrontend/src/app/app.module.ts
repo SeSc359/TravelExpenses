@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ngfModule } from "angular-file"
+import { ngfModule} from "angular-file"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatusComponent } from './status/status.component';
@@ -9,7 +9,6 @@ import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelex
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { UploaderAttachmentComponent } from './uploader-attachment/uploader-attachment.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 
 import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
@@ -21,7 +20,6 @@ import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-e
     CreateTravelExpenseComponent,
     PastTravelExpensesComponent,
     HomeComponent,
-    UploaderAttachmentComponent,
     ItemFormComponent,
     TravelExpensesDetailComponent
 

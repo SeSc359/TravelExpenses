@@ -10,6 +10,13 @@
     <div class="col">
         <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
     </div>
-    <app-uploader-attachment></app-uploader-attachment>
     <button type="submit" value="Abschicken" class="col">Einzelposten hinzufügen</button>
 </form>
+<!-- <div class="col">
+    <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigen Namen!)</label>
+    <input type="file" class="form-control-file" ngfSelect type="file" [(files)]="files" [maxSize]="100000" />
+</div> -->
+<div class="col">
+    <input ngf multiple type="file" accept="image/*" [(files)]="files" maxSize="10240" />
+    <button *ngIf="files" (click)="uploadFiles(files)">Upload</button>
+</div>
