@@ -36,5 +36,5 @@ public class Attachment {
 
 	@ManyToOne()
 	@JoinColumn(name = "trexItem_Id")
-	private TrexItem trexItem;
+	private Item trexItem;
 }

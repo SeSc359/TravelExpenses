@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  personalForm: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
+    this.personalForm = this.fb.group({
+      id: [''],
+      month: [''],
+      year: [''],
+      // costs: [''],
+     status: ['false']
+    })
   }
 
 }
