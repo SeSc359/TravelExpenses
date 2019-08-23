@@ -1,7 +1,7 @@
 
 import { Item } from './Entity/Item';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEventType } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class TravelExpenseService {
   travelExpenseList: TravelExpense[] = [];
+  selecteFile : File=null;
 
   url: string = "http://localhost:8080/travelexpense/";
 
@@ -45,6 +46,22 @@ export class TravelExpenseService {
     let formData = new FormData();
     formData.append('file', file);
        return this.http.put<File>('{this.url} + attachment', file);  
+   }
+
+   onFileSelected(event){
+     this.selecteFile =<File>event.target.files[0];
+   }
+
+   onUpload(){
+     const fd = new FormData();
+     fd.append('file', this.selecteFile, this.selecteFile.name);
+     this.http.post("{this.url} + saveItem", fd,{
+       reportProgress:true,observe:'events'})
+       .subscribe(event=>{
+         if (event.type===HttpEventType.Response){
+           console.log(event);
+         }
+     });
    }
 
    

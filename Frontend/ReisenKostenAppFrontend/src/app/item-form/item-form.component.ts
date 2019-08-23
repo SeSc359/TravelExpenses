@@ -18,13 +18,9 @@ import { TravelExpenseService } from '../travel-expense.service';
 export class ItemFormComponent implements OnInit {
 
   itemForm: FormGroup;
-<<<<<<< HEAD
   trexItemList: TrexItem[];
   trexItem : TrexItem
   isCreating: boolean = false;
-=======
-  ItemList: Item[];
->>>>>>> features_lukas
 
   constructor(private fb:FormBuilder,private travelExpenseService: TravelExpenseService) { }
   ngOnInit() {
