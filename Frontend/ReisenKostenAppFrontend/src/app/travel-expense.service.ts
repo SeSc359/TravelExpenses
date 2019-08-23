@@ -1,4 +1,5 @@
-import { TrexItem } from './Entity/TrexItem';
+
+import { Item } from './Entity/Item';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -32,14 +33,14 @@ export class TravelExpenseService {
     return this.http.post<TravelExpense>("{this.url} + saveExpense", travelExpense, httpOptions);
   }
 
-  createTrexItem(trexItem: TrexItem): Observable<TrexItem> {
+  createItem(Item: Item): Observable<Item> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post<TrexItem>("{this.url} + saveItem", trexItem, httpOptions);
+    return this.http.post<Item>("{this.url} + saveItem", Item, httpOptions);
   }
 
-  createAttachment(file: File): Observable<any> { 
+  createAttachment(ItemId: number, file: File): Observable<any> { 
     console.log(file);
     let formData = new FormData();
     formData.append('file', file);

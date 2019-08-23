@@ -1,6 +1,7 @@
+import { Item } from '../Entity/Item';
 import { TravelExpenseService } from './../travel-expense.service';
 
-import { TrexItem } from './../Entity/TrexItem';
+
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class ItemFormComponent implements OnInit {
 
   itemForm: FormGroup;
-  trexItemList: TrexItem[];
+  ItemList: Item[];
 
   constructor(private fb:FormBuilder,private travelExpenseService: TravelExpenseService) { }
   ngOnInit() {
@@ -28,10 +29,10 @@ export class ItemFormComponent implements OnInit {
 
   }
 
-  createTrexItem(){
-    const trexItem: TrexItem = this.itemForm.value;
-    trexItem.id = null;
-    this.travelExpenseService.createTrexItem(trexItem).subscribe(trexItem => this.trexItemList.push(trexItem));
+  createItem(){
+    const Item: Item = this.itemForm.value;
+    Item.id = null;
+    this.travelExpenseService.createItem(Item).subscribe(Item => this.ItemList.push(Item));
    }
 
 }

@@ -41,7 +41,7 @@ public class TravelExpense {
 
 	@OneToMany(mappedBy = "travelExpense", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 
-	private List<TrexItem> trexItemList;
+	private List<Item> trexItemList;
 
 	// Constructor
 	public TravelExpense() {

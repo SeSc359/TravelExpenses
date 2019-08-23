@@ -2,8 +2,8 @@ package com.travelexpanses.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.travelexpanses.entities.TrexItem;
+import com.travelexpanses.entities.Item;
 
-public interface TrexItemRepository extends CrudRepository<TrexItem, Long> {
+public interface ItemRepository extends CrudRepository<Item, Long> {
 
 }

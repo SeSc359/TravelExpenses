@@ -21,7 +21,7 @@ import lombok.Data;
 @Data 
 @Table (name = "trexItem")
 @Entity 
-public class TrexItem {
+public class Item {
 	
 
 	@Id

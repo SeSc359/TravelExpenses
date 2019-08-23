@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.travelexpanses.entities.Attachment;
+import com.travelexpanses.entities.Item;
 import com.travelexpanses.entities.TravelExpense;
-import com.travelexpanses.entities.TrexItem;
 import com.travelexpanses.mail.TravelExpensesMailServiceImpl;
 import com.travelexpanses.repository.AttachmentRepository;
+import com.travelexpanses.repository.ItemRepository;
 import com.travelexpanses.repository.TravelExpenseRepository;
-import com.travelexpanses.repository.TrexItemRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/travelexpense")
@@ -39,7 +39,7 @@ public class TravelExpenseController {
 	AttachmentRepository attachmentRepo;
 
 	@Autowired
-	TrexItemRepository itemRepo;
+	ItemRepository itemRepo;
 
 	@Autowired
 	TravelExpensesMailServiceImpl mailService;
@@ -66,7 +66,7 @@ public class TravelExpenseController {
 	}
 
 	@PostMapping("/saveItem")
-	public TrexItem createTrexItem(@RequestBody @Valid TrexItem item) {
+	public Item createTrexItem(@RequestBody @Valid Item item) {
 		item.setId(null);
 		return itemRepo.save(item);
 	}

@@ -17,7 +17,6 @@ export class UploaderAttachmentComponent implements OnInit {
   ngOnInit() {
   }
   createAttachment() {
-  
-  this.travelExpenseService.createAttachment(this.files).subscribe()
+   this.travelExpenseService.createAttachment(this.files).subscribe()
   }
 }
