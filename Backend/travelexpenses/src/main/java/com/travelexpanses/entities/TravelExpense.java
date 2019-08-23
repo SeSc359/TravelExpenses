@@ -2,6 +2,7 @@ package com.travelexpanses.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -38,7 +41,8 @@ public class TravelExpense {
 	@Column(name = "status")
 	private boolean status; // false = inProgress, true = Done.
 
-	@OneToMany(mappedBy = "travelExpense", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "travelExpense", fetch = FetchType.EAGER)
+	@JsonBackReference
 	private List<TrexItem> trexItemList;
 
 	// Constructor

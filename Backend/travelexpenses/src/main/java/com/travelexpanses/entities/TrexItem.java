@@ -3,6 +3,7 @@ package com.travelexpanses.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,13 +17,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 
-@Data 
-@Table (name = "trexItem")
-@Entity 
+@Data
+@Table(name = "trexItem")
+@Entity
 public class TrexItem {
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,11 +35,12 @@ public class TrexItem {
 
 	@Column
 	private String description;
-	
+
 	@Column
 	private Double amount;
 
-	@OneToMany(mappedBy = "trexItem", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "trexItem", fetch = FetchType.EAGER)
+	@JsonBackReference
 	private List<Attachment> attachmentList;
 
 	@ManyToOne()
