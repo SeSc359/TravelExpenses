@@ -84,14 +84,10 @@ export class ItemFormComponent implements OnInit {
     const Item: Item = this.itemForm.value;
     Item.id = null;
     this.travelExpenseService.submit(Item);
-
   }
 
   onSubmit() {
     this.travelExpenseService.createAttachment.subscribe(this.item.id, this.files)
   }
-
-
-
 }
 
