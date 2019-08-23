@@ -8,8 +8,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let travelExpense of travelExpenseList">
-            <td scope="col">{{travelExpense.id}}</td>
+        <tr *ngFor="let travelExpense of travelExpenseList" >
+            <td scope="col" *ngIf="!isCreating" (click)="openForm()">{{travelExpense.id}}</td>
             <td scope="col">{{travelExpense.month}}</td>
             <td scope="col">{{travelExpense.year}}</td> 
         </tr>
@@ -21,9 +21,12 @@
 </div>
     
 <div *ngIf="isCreating">
-    <div>
-<form [formGroup]="itemForm" (ngSubmit)="createTrexItem()">
- 
+  
+<form [formGroup]="itemForm" (ngSubmit)="handleSubmit($event)">
+    <fieldset>
+    <div formGroupName="Items" *ngFor="let Item of itemForm.get('Items').controls; let i = index;">
+    
+    <fieldset [formGroupName]="i">
     <div class="col">
         <input type="date" class="form-control" placeholder="Datum" formControlName="date">
     </div>
@@ -33,14 +36,18 @@
     <div class="col">
         <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
     </div>
-</form>
-div class="col">
-    <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigen Namen!)</label>
-    <input type="file" class="form-control-file" ngfSelect [(files)]="files" />
-    <button >Remove</button>
-</div>
+    <div class="col">
+       <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigen Namen!)</label>
+       <input type="file" class="form-control-file" ngfSelect [(files)]="files"/>
+        <button (click)="handleRemoveItem(i)">Remove</button>
+    </div>
+    </fieldset>
+    </div>
+      <button (click)="handleAddItem()">Add</button>
 
-<button (click) ="handleFileInput()">Add</button>
 <button type="submit" value="Upload" class="col"><span class="glyphicon glyphicon-upload" (click)="uploadFileToActivity()" ></span> Upload</button>  
-   
+<button type="submit">submit</button>   
+</fieldset>
+
+</form>
 </div>

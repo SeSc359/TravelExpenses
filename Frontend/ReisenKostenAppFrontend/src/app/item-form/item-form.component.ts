@@ -1,5 +1,5 @@
 
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { TravelExpenseService } from '../travel-expense.service';
 import { Item } from '../Entity/Item';
@@ -12,45 +12,77 @@ import { Item } from '../Entity/Item';
 export class ItemFormComponent implements OnInit {
 
   itemForm: FormGroup;
+  Items: FormArray;
+ 
   ItemList: Item[];
   Item : Item
   isCreating: boolean = false;
-  
-  
+
   files: File[];
   file: File;
   error: string ="Not Funded"
 
   constructor(private fb:FormBuilder,private travelExpenseService: TravelExpenseService) { }
-  ngOnInit() {
-
-    this.itemForm = this.fb.group({
-      id: [''],
-      date: [''],
-      description: [''],      
-      amount: [''],      
-      status: ['false']
-    })
-  }
-
+  
   openForm(){
     this.isCreating = true;
   }
-
-   createItem(){
-    const Item: Item = this.itemForm.value;
-    Item.id = null;
-    this.travelExpenseService.createItem(Item).subscribe(Item => this.ItemList.push(Item));
-   }
+ 
+  ngOnInit() {
+   // this.itemForm = this.fb.group({
+  //   id: [''],
+  //   date: [''],
+  //   description: [''],      
+  //   amount: [''],      
    
+  // });
+  this.itemForm = this.fb.group({
+    Items: this.fb.array([ this.createItem() ])
+  });
+}
+
+createItem(): FormGroup {
+  return this.fb.group({
+    date: [''],
+    description: [''],      
+    amount: [''],
+  });
+}
+
+handleAddItem() {
+  this.Items = this.itemForm.get('Items') as FormArray;
+  this.Items.push(this.createItem());
+}
+
+handleRemoveItem(i:number) {
+  this.Items = this.itemForm.get('Items') as FormArray;
+  this.Items.removeAt(i);
+}
+
+  //  createItem(){
+  //   const Item: Item = this.itemForm.value;
+  //   Item.id = null;
+  //   this.travelExpenseService.createItem(Item).subscribe(Item => this.ItemList.push(Item));
+  //  }
+  
   FileSelect(){
   this.travelExpenseService.onFileSelected(event);
 }
  
    uploadFileToActivity() {
-     this.travelExpenseService.onUpload();
-    
+     this.travelExpenseService.onUpload();   
  }
+
+handleSubmit(event: Event) {
+  // if (!this.itemForm.valid) {
+  //   console.warn("Form invalid");
+  //   return;
+  // }
+  const Item: Item = this.itemForm.value;
+  Item.id = null;
+  this.travelExpenseService.submit(Item);
+ 
+}
 
 
 

@@ -64,7 +64,16 @@ export class TravelExpenseService {
      });
    }
 
-   
+   submit(Item : Item) {
+    console.log(Item);
+    
+    const httpOptions = {
+      headers: new HttpHeaders({'content-type': 'application/json'}),
+      responseType: 'arrayBuffer' as any
+    };
+
+    return this.http.post("http://localhost:8080//saveItem", Item, httpOptions);
+  }
   
  
 
