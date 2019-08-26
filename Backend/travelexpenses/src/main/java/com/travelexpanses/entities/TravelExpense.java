@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 
 @Data
@@ -39,8 +41,9 @@ public class TravelExpense {
 	@Column(name = "status")
 	private boolean status; // false = inProgress, true = Done.
 
-	@OneToMany(mappedBy = "travelExpense", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "travelExpense", fetch = FetchType.EAGER)
+	@JsonBackReference
 	private List<Item> trexItemList;
 
 	// Constructor

@@ -35,6 +35,6 @@ public class Attachment {
 	private byte[] file;
 
 	@ManyToOne()
-	@JoinColumn(name = "trexItem_Id")
-	private Item trexItem;
+	@JoinColumn(name = "item_Id")
+	private Item item;
 }
