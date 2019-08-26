@@ -42,7 +42,7 @@ export class TravelExpenseService {
     return this.http.post<Item>("{this.url} + saveItem", item, httpOptions);
   }
 
-  createAttachment(item: Item, file: File): Observable<any> { 
+  createAttachment(item: Item, file: File) { 
     console.log(file);
     let formData = new FormData();
     formData.append('file', file);

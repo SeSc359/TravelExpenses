@@ -1,7 +1,6 @@
 import { Item } from '../Entity/Item';
 import { TravelExpenseService } from './../travel-expense.service';
 import { ngfModule, ngf } from "angular-file";
-import { HttpClient, HttpRequest, HttpResponse, HttpEvent } from "@angular/common/http"
 import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,12 +16,12 @@ export class ItemFormComponent implements OnInit {
   itemForm: FormGroup;
   Items: FormArray;
 
-  ItemList: Item[];
-  Item: Item
+  itemList: Item[];
+  item: Item
   isCreating: boolean = false;
 
-  files: File[];
-  file: File;
+  // files: File[];
+  files: File;
   error: string = "Not Funded"
 
   constructor(private fb: FormBuilder, private travelExpenseService: TravelExpenseService) { }
@@ -65,7 +64,7 @@ export class ItemFormComponent implements OnInit {
   postItem() {
     const Item: Item = this.itemForm.value;
     Item.id = null;
-    this.travelExpenseService.createItem(Item).subscribe(Item => this.ItemList.push(Item));
+    this.travelExpenseService.createItem(Item).subscribe(Item => this.itemList.push(Item));
   }
 
   FileSelect() {
@@ -87,7 +86,7 @@ export class ItemFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.travelExpenseService.createAttachment.subscribe(this.item.id, this.files)
+    this.travelExpenseService.createAttachment(this.item, this.files).subscribe();
   }
 }
 
