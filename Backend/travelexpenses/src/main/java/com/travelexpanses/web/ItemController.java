@@ -58,11 +58,11 @@ public class ItemController {
 		return itemRepo.save(item);
 	}
 
-	@PostMapping("/items")
-	public Item createItemTest(@RequestBody Item item) {
-		item.setId(null);
-		return itemRepo.save(item);
-	}
+//	@PostMapping("/items")
+//	public Item createItemTest(@RequestBody Item item) {
+//		item.setId(null);
+//		return itemRepo.save(item);
+//	}
 
 	@PostMapping("items/{id}/attachment")
 	public ResponseEntity<?> insertAttachment(@PathVariable long id, @RequestParam("file") MultipartFile file) {

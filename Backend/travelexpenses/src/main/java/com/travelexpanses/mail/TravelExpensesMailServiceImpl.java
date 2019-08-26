@@ -13,8 +13,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.travelexpanses.entities.Attachment;
+import com.travelexpanses.entities.Item;
 import com.travelexpanses.entities.TravelExpense;
-import com.travelexpanses.entities.TrexItem;
 
 @Service
 public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService {
@@ -62,8 +62,8 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 //			helper.setSentDate(Date.valueOf(LocalDate.now()));
 			message.setFrom("hajoklueten@gmail.com"); // Generalize Input of User Mail-Address
 
-			List<TrexItem> itemList = travelExpense.getTrexItemList();
-			for (TrexItem item : itemList) {
+			List<Item> itemList = travelExpense.getItemList();
+			for (Item item : itemList) {
 
 				List<Attachment> attachmentList = item.getAttachmentList();
 				for (Attachment attachment : attachmentList) {

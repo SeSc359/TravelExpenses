@@ -44,7 +44,7 @@ public class TravelExpense {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "travelExpense", fetch = FetchType.EAGER)
 	@JsonBackReference
-	private List<Item> trexItemList;
+	private List<Item> itemList;
 
 	// Constructor
 	public TravelExpense() {

@@ -2,6 +2,7 @@ import { TravelExpenseService } from './../travel-expense.service';
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-travel-expense',
@@ -13,7 +14,7 @@ export class CreateTravelExpenseComponent implements OnInit {
   expenseForm: FormGroup;
   travelExpenseList: TravelExpense[];
 
-  constructor(private fb:FormBuilder, private travelExpenseService: TravelExpenseService) { }
+  constructor(private fb:FormBuilder, private travelExpenseService: TravelExpenseService, private router: Router) { }
 
   ngOnInit() {
 
@@ -21,15 +22,21 @@ export class CreateTravelExpenseComponent implements OnInit {
       id: [''],
       month: [''],
       year: [''],
-      // costs: [''],
-     status: ['false']
+      status: ['false']
     })
+   
+  
+    
 }
 
 createExpense(){
   const travelExpense: TravelExpense = this.expenseForm.value;
   travelExpense.id = null;
-  this.travelExpenseService.createTravelExpense(travelExpense).subscribe(travelExpense => this.travelExpenseList.push(travelExpense));
- }
+  this.travelExpenseService.createTravelExpense(travelExpense).subscribe(travelExpense => {
+    //  this.travelExpenseList.push(travelExpense);
+     this.router.navigate([`/expenses/${travelExpense.id}/items/`]); }
+  );
+  
+}
 
 }
