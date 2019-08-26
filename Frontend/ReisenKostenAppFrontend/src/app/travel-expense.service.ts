@@ -53,15 +53,19 @@ export class TravelExpenseService {
    }
 
    onUpload(){
-     const fd = new FormData();
-     fd.append('file', this.selecteFile, this.selecteFile.name);
-     this.http.post("{this.url} + saveItem", fd,{
-       reportProgress:true,observe:'events'})
-       .subscribe(event=>{
-         if (event.type===HttpEventType.Response){
-           console.log(event);
-         }
-     });
+      const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': undefined})};
+      const fd = new FormData();
+      fd.append('file', this.selecteFile);
+      this.http.post("{this.url} + attachment", fd, httpOptions)
+      //{
+  //    reportProgress:true,observe:'events'})
+  //  .subscribe(event=>{
+  //    if (event.type===HttpEventType.Response){
+  //    console.log(event);
+  //    }
+  //   });
+        
    }
 
    submit(Item : Item) {

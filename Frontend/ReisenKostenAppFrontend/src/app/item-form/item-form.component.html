@@ -1,4 +1,4 @@
-<table class="table">
+<!-- <table class="table">
     <thead class="thead-dark">
         <tr>
             <th scope="col">ID</th>
@@ -16,17 +16,9 @@
     </tbody>
 </table>
 
-<div *ngIf="!isCreating">
-    <button (click)="openForm()">open the form to upload</button>
-</div>
-    
-<div *ngIf="isCreating">
-  
+
 <form [formGroup]="itemForm" (ngSubmit)="handleSubmit($event)">
-    <fieldset>
-    <div formGroupName="Items" *ngFor="let Item of itemForm.get('Items').controls; let i = index;">
     
-    <fieldset [formGroupName]="i">
     <div class="col">
         <input type="date" class="form-control" placeholder="Datum" formControlName="date">
     </div>
@@ -35,19 +27,17 @@
     </div>
     <div class="col">
         <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
-    </div>
-    <div class="col">
+    </div> -->
+    <!-- <div class="col">
        <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigen Namen!)</label>
-       <input type="file" class="form-control-file" ngfSelect [(files)]="files"/>
-        <!-- <button (click)="handleRemoveItem(i)">Remove</button> -->
-    </div>
-    </fieldset>
-    </div>
-      <button (click)="handleAddItem()">Add</button>
+       <input type="file" class="form-control-file" ngfSelect [(files)]="files"/> -->
+     
+    <app-upload></app-upload>
+    
+      
+<!-- <button type="submit" value="Upload" class="col"><span class="glyphicon glyphicon-upload" (click)="uploadFileToActivity()" ></span> Upload</button>   -->
+<!-- <button type="submit">submit</button>   
 
-<button type="submit" value="Upload" class="col"><span class="glyphicon glyphicon-upload" (click)="uploadFileToActivity()" ></span> Upload</button>  
-<button type="submit">submit</button>   
-</fieldset>
+</form> -->
 
-</form>
-</div>
+
