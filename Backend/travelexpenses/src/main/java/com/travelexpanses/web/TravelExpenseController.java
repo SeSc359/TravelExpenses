@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travelexpanses.entities.TravelExpense;
+import com.travelexpanses.entities.UpdateStatusDto;
 import com.travelexpanses.mail.TravelExpensesMailServiceImpl;
 import com.travelexpanses.repository.AttachmentRepository;
 import com.travelexpanses.repository.ItemRepository;
@@ -56,6 +58,21 @@ public class TravelExpenseController {
 	public TravelExpense insertNewTravelExpense(@RequestBody @Valid TravelExpense trex) {
 		trex.setId(null);
 		return trexRepo.save(trex);
+	}
+
+
+	@PutMapping("/{expenseId}/status")
+	public ResponseEntity<?> updateTravelExpenseStatus(@PathVariable long expenseId,
+			@RequestBody UpdateStatusDto updateStatusDto) {
+		Optional<TravelExpense> expenseOptional = trexRepo.findById(expenseId);
+		if (expenseOptional.isPresent()) {
+			TravelExpense expense = expenseOptional.get();
+			expense.setStatus(updateStatusDto.isStatus());
+			trexRepo.save(expense);
+			return ResponseEntity.ok().build();
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 

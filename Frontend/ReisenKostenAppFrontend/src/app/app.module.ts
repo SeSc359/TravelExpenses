@@ -31,7 +31,8 @@ import { UploadComponent } from './upload/upload.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ngfModule
+    ngfModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

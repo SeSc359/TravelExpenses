@@ -1,7 +1,9 @@
 import { TravelExpense } from './../Entity/TravelExpense';
 import { Item } from '../Entity/Item';
 import { TravelExpenseService } from './../travel-expense.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { ngfModule, ngf } from "angular-file";
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -25,9 +27,10 @@ export class ItemFormComponent implements OnInit {
     this.itemForm = this.fb.group({
       id: [''],
       date: [''],
-      description: [''],
-      amount: [''],
-      })
+      description: ['', Validators.required],
+      amount: ['', [Validators.required, Validators.min(0)]],
+      file: ['']
+  })
   }
 
   itemSubmit() {
@@ -40,5 +43,17 @@ export class ItemFormComponent implements OnInit {
     });
 
   }
+ 
+  
+  // attachmentSubmit() {
+  //   this.travelExpenseService.createAttachment(this.item, this.files).subscribe();
+  // }
+
+  Email(){
+    
+    const item: Item = this.itemForm.value;
+    const exId = +this.route.snapshot.paramMap.get('expenseId');   
+    this.travelExpenseService.sendWithAttachment(item).subscribe();
+}
 }
 
