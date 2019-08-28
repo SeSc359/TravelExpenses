@@ -1,3 +1,4 @@
+import { TravelExpense } from './../Entity/TravelExpense';
 import { TravelExpenseService } from './../travel-expense.service';
 
 import { Component, OnInit } from '@angular/core';

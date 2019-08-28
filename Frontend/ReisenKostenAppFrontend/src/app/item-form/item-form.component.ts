@@ -1,3 +1,4 @@
+import { TravelExpense } from './../Entity/TravelExpense';
 import { Item } from '../Entity/Item';
 import { TravelExpenseService } from './../travel-expense.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -17,7 +18,7 @@ export class ItemFormComponent implements OnInit {
 
   itemList: Item[];
   item: Item
-
+  
   constructor(private fb: FormBuilder, private travelExpenseService: TravelExpenseService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -26,8 +27,7 @@ export class ItemFormComponent implements OnInit {
       date: [''],
       description: [''],
       amount: [''],
-      file: ['']
-    })
+      })
   }
 
   itemSubmit() {

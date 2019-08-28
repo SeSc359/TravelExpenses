@@ -1,8 +1,10 @@
+import { TravelExpense } from './Entity/TravelExpense';
 
 import { Item } from './Entity/Item';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from './Entity/User';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +43,13 @@ export class TravelExpenseService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     return this.http.post<Item>(this.url + id +'/items', item, httpOptions);
+  }
+
+  createUser(user: User): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post<User>(`http://localhost:8080/user`, user, httpOptions);
   }
 
 }
