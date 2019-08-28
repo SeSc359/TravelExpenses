@@ -1,7 +1,7 @@
 class TravelExpense {
     id: number;
     name: string;
-    month: string;
+    month: number;
 	year: number;
 	costs: number;
     status: boolean; 

@@ -1,7 +1,7 @@
 import { Item } from '../Entity/Item';
 import { TravelExpenseService } from './../travel-expense.service';
 import { ngfModule, ngf } from "angular-file";
-import { FormGroup, FormBuilder} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -29,8 +29,8 @@ export class ItemFormComponent implements OnInit {
     this.itemForm = this.fb.group({
       id: [''],
       date: [''],
-      description: [''],
-      amount: ['']
+      description: ['', Validators.required],
+      amount: ['', [Validators.required, Validators.min(0)]]
   })
   }
 
