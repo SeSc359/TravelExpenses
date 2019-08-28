@@ -1,9 +1,11 @@
 package com.travelexpanses.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.travelexpanses.entities.Attachment;
 
-public interface AttachmentRepository extends CrudRepository<Attachment, Long> {
+@Repository
+public interface AttachmentRepository extends JpaRepository<Attachment, Long> {
 
 }

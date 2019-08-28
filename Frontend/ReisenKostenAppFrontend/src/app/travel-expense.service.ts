@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TravelExpenseService {
 
   travelExpense: TravelExpense;
@@ -41,42 +42,6 @@ export class TravelExpenseService {
     };
     return this.http.post<Item>(`${this.url}/${id}/items`, item, httpOptions);
   }
-
-  createAttachment(item: Item, file: File) { 
-    console.log(file);
-    let formData = new FormData();
-    formData.append('file', file);
-       return this.http.post<File>(`http://localhost:8080/items/${item.id}/attachment`, file);  
-   }
-
-  //  onFileSelected(event){
-  //    this.selecteFile =<File>event.target.files[0];
-  //  }
-
-  //  onUpload(){
-  //    const fd = new FormData();
-  //    fd.append('file', this.selecteFile, this.selecteFile.name);
-  //    this.http.post("{this.url} + saveItem", fd,{
-  //      reportProgress:true,observe:'events'})
-  //      .subscribe(event=>{
-  //        if (event.type===HttpEventType.Response){
-  //          console.log(event);
-  //        }
-  //    });
-  //  }
-
-  //  submit(Item : Item) {
-  //   console.log(Item);
-    
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({'content-type': 'application/json'}),
-  //     responseType: 'arrayBuffer' as any
-  //   };
-
-  //   return this.http.post("http://localhost:8080//saveItem", Item, httpOptions);
-  // }
-  
- 
 
 }
 

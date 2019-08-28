@@ -8,8 +8,5 @@
     <div class="col">
         <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
     </div>
-    <div>
-        <input ngfSelect type="file" [(files)]="files" [maxSize]="100000" [(lastInvalids)]="any" class="form-control" placeholder="Upload" formControlName="file" />
-    </div>
     <button type="submit" (onSubmit)="itemSubmit()">submit</button>
 </form>

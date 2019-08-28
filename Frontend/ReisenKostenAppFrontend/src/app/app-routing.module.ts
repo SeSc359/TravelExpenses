@@ -1,3 +1,4 @@
+import { UploadComponent } from './upload/upload.component';
 import { HomeComponent } from './home/home.component';
 
 import { CreateTravelExpenseComponent } from './create-travelexpense/create-travelexpense.component';
@@ -7,8 +8,6 @@ import { StatusComponent } from './status/status.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ItemFormComponent } from './item-form/item-form.component';
-
-import { from } from 'rxjs';
 import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
 
 const routes: Routes = [
@@ -19,7 +18,7 @@ const routes: Routes = [
   { path: 'expenses/create', component: CreateTravelExpenseComponent},
   { path: 'expenselist', component: PastTravelExpensesComponent },
   { path: 'expenselist/:expenseId', component:TravelExpensesDetailComponent},
-
+  { path: 'items/:itemId/attachment', component:UploadComponent},
 ];
 
 @NgModule({
