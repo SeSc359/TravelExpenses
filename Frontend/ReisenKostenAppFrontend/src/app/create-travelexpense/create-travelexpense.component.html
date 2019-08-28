@@ -1,15 +1,34 @@
-<p>Eingabeformular. Bitte geben Sie zunächst den Monat und das Jahr für die Abrechnung ein, danach die jeweiligen Einzelposten samt Anhang.
+<p>Eingabeformular. Bitte geben Sie zunächst den Monat und das Jahr für die Abrechnung ein, danach die jeweiligen
+    Einzelposten samt Anhang.
 </p>
 <form [formGroup]="expenseForm" (ngSubmit)="createExpense()">
     <div class="row">
         <div class="col">
             <input type="text" class="form-control" placeholder="Monat" formControlName="month">
+            <!-- <div *ngIf="expenseForm.controls.month.errors" class="alert alert-danger">
+                <div *ngIf="expenseForm.controls.month.required">
+                    Bitte wählen Sie einen Monat an.
+                </div>
+            </div> -->
         </div>
         <div class="col">
             <input type="text" class="form-control" placeholder="Jahr" formControlName="year">
         </div>
     </div>
-    <button type="submit" value="Abschicken" class="col" (onSubmit)="createExpense()">Submit</button>
+
+    <div>
+        <input matInput [matDatepicker]="dp" placeholder="Month and Year" [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp
+                        startView="multi-year"
+                        (yearSelected)="chosenYearHandler($event)"
+                        (monthSelected)="chosenMonthHandler($event, dp)"
+                        panelClass="example-month-picker">
+        </mat-datepicker>
+    </div>
+
+    <button type="submit" value="Abschicken" class="col" [disabled]="!expenseForm.valid"
+        (onSubmit)="createExpense()">Submit</button>
 </form>
 <br>
 <!-- <app-item-form></app-item-form> -->

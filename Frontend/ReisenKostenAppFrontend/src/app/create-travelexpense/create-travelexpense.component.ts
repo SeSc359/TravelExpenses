@@ -4,6 +4,27 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
+import * as _moment from 'moment';
+// tslint:disable-next-line:no-duplicate-imports
+import { Moment} from 'moment';
+const moment = _moment;
+
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 @Component({
   selector: 'app-create-travel-expense',
   templateUrl: './create-travelexpense.component.html',
@@ -20,8 +41,8 @@ export class CreateTravelExpenseComponent implements OnInit {
 
     this.expenseForm = this.fb.group({
       id: [''],
-      month: ['', Validators.required, Validators.min(1), Validators.max(12)],
-      year: ['', Validators.required, Validators.minLength(4),Validators.maxLength(4)],
+      month: [''],
+      year: [''],
       status: ['false']
     })
    
@@ -32,11 +53,31 @@ export class CreateTravelExpenseComponent implements OnInit {
 createExpense(){
   const travelExpense: TravelExpense = this.expenseForm.value;
   travelExpense.id = null;
+  const dateValue :Moment = this.date.value;
+  travelExpense.month = dateValue.month();
+  travelExpense.year = dateValue.year();
+
   this.travelExpenseService.createTravelExpense(travelExpense).subscribe(travelExpense => {
     //  this.travelExpenseList.push(travelExpense);
      this.router.navigate([`/expenses/${travelExpense.id}/items/`]); }
   );
   
+}
+
+//
+date = new FormControl(moment());
+
+chosenYearHandler(normalizedYear: Moment) {
+  const ctrlValue = this.date.value;
+  ctrlValue.year(normalizedYear.year());
+  this.date.setValue(ctrlValue);
+}
+
+chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
+  const ctrlValue = this.date.value;
+  ctrlValue.month(normalizedMonth.month());
+  this.date.setValue(ctrlValue);
+  datepicker.close();
 }
 
 }
