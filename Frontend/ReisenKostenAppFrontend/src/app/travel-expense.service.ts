@@ -40,14 +40,14 @@ export class TravelExpenseService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post<Item>(`${this.url}/${id}/items`, item, httpOptions);
+    return this.http.post<Item>(this.url + id +'/items', item, httpOptions);
   }
 
   createAttachment(item: Item, file: File) { 
     console.log(file);
     let formData = new FormData();
     formData.append('file', file);
-       return this.http.post<File>(this.url + item.id + 'attachment', file);  
+       return this.http.post<File>(this.url + item.id + '/attachment', file);  
    }
 
   //  onFileSelected(event){

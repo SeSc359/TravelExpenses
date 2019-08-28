@@ -12,12 +12,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let travelExpense of travelExpenseList">
-            <td scope="col">{{travelExpense.id}}</td>
-            <td scope="col">{{travelExpense.month}}</td>
-            <td scope="col">{{travelExpense.year}}</td>
+            <td scope="col" routerLink="../expenselist/{{travelExpense.id}}" >{{travelExpense.id}}</td>
+            <td scope="col" routerLink="../expenselist/{{travelExpense.id}}" >{{travelExpense.month}}</td>
+            <td scope="col" routerLink="../expenselist/{{travelExpense.id}}" >{{travelExpense.year}}</td>
             
             <td scope="col">{{travelExpense.costs}}</td>
-            
             <td scope="col" [ngStyle]="{backgroundColor: statuscolor}"></td>
             <td><button (click)="statusChange()">im process</button></td>
             <td><button (click)="delete()">ausgezahlt</button></td>
