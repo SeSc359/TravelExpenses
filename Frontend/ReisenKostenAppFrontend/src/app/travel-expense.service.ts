@@ -1,7 +1,7 @@
 
 import { Item } from './Entity/Item';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,8 +11,7 @@ export class TravelExpenseService {
 
   travelExpense: TravelExpense;
   travelExpenseList: TravelExpense[] = [];
-  selecteFile : File=null;
-
+  
   url: string = "http://localhost:8080/expenses/";
 
   constructor(private http: HttpClient) { }
@@ -47,7 +46,7 @@ export class TravelExpenseService {
     console.log(file);
     let formData = new FormData();
     formData.append('file', file);
-       return this.http.post<File>(this.url + item.id + 'attachment', file);  
+       return this.http.post<File>(`http://localhost:8080/items/${item.id}/attachment`, file);  
    }
 
   //  onFileSelected(event){
