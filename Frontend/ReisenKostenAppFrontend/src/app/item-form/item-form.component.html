@@ -6,14 +6,24 @@
     </div>
     <div class="col">
         <input type="text" class="form-control" placeholder="Beschreibung" formControlName="description">
+        <div *ngIf="itemForm.controls.description.errors && (itemForm.controls.description.touched || itemForm.controls.description.dirty)" class="alert alert-danger">
+            Bitte fügen Sie eine Beschreibung hinzu.
+        </div>
     </div>
     <div class="col">
         <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
+        <div *ngIf="itemForm.controls.amount.errors && (itemForm.controls.amount.touched || itemForm.controls.amount.dirty)" class="alert alert-danger">
+            <div *ngIf="itemForm.controls.amount.errors.required">
+                Bitte einen Betrag angeben.
+            </div>
+            <div *ngIf="itemForm.controls.amount.errors.min">
+                Betrag darf nicht negativ sein.
+            </div>
+        </div>
     </div>
 
-    <!-- <button type="submit" (onSubmit)="Email()">submit</button> -->
-    
+    <button type="submit" [disabled]="itemForm.invalid" (onSubmit)="itemSubmit()" (onSubmit)="Email()">submit</button>
 
-  <button type="submit" (onSubmit)="itemSubmit()" (onSubmit)="Email()">send Email</button>
+  <!-- <button type="submit" (onSubmit)="itemSubmit()" (onSubmit)="Email()">send Email</button> -->
     
 </form>
