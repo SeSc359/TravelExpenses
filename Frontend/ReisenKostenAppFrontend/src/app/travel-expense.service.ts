@@ -50,6 +50,10 @@ export class TravelExpenseService {
        return this.http.post<File>(this.url + item.id + '/attachment', file);  
    }
 
+   sendWithAttachment(item:Item): Observable<any> {
+    return this.http.post(this.url +'send',item);
+  }
+
   //  onFileSelected(event){
   //    this.selecteFile =<File>event.target.files[0];
   //  }

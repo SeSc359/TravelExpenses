@@ -23,10 +23,7 @@ export class CreateTravelExpenseComponent implements OnInit {
       month: [''],
       year: [''],
       status: ['false']
-    })
-   
-  
-    
+    })   
 }
 
 createExpense(){

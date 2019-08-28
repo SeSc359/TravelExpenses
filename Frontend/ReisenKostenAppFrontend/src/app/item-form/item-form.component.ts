@@ -38,11 +38,18 @@ export class ItemFormComponent implements OnInit {
     const item: Item = this.itemForm.value;
     item.id = null;
     const exId = +this.route.snapshot.paramMap.get('expenseId');
-    this.travelExpenseService.createItem(item, exId).subscribe(item => this.itemList.push(item));
+    this.travelExpenseService.createItem(item, exId).subscribe();
   }
 
   // attachmentSubmit() {
   //   this.travelExpenseService.createAttachment(this.item, this.files).subscribe();
   // }
+
+  Email() {
+    
+    const item: Item = this.itemForm.value;
+    const exId = +this.route.snapshot.paramMap.get('expenseId');   
+    this.travelExpenseService.sendWithAttachment(item).subscribe();
+}
 }
 
