@@ -1,11 +1,8 @@
 import { Item } from '../Entity/Item';
 import { TravelExpenseService } from './../travel-expense.service';
-<<<<<<< HEAD
 import { ngfModule, ngf } from "angular-file";
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
-=======
-import { FormGroup, FormBuilder } from '@angular/forms';
->>>>>>> features_lukas
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -39,11 +36,14 @@ export class ItemFormComponent implements OnInit {
     const item: Item = this.itemForm.value;
     item.id = null;
     const exId = +this.route.snapshot.paramMap.get('expenseId');
-this.travelExpenseService.createItem(item, exId).subscribe(item => { 
-  // this.itemList.push(item); 
-  this.router.navigate([`/items/${item.id}/attachment/`]); 
-});
+    this.travelExpenseService.createItem(item, exId).subscribe(item => { 
+      // this.itemList.push(item); 
+      this.router.navigate([`/items/${item.id}/attachment/`]); 
+    });
 
+  }
+ 
+  
   // attachmentSubmit() {
   //   this.travelExpenseService.createAttachment(this.item, this.files).subscribe();
   // }
@@ -51,7 +51,7 @@ this.travelExpenseService.createItem(item, exId).subscribe(item => {
   Email(){
     
     const item: Item = this.itemForm.value;
-    // const exId = +this.route.snapshot.paramMap.get('expenseId');   
+    const exId = +this.route.snapshot.paramMap.get('expenseId');   
     this.travelExpenseService.sendWithAttachment(item).subscribe();
 }
 }
