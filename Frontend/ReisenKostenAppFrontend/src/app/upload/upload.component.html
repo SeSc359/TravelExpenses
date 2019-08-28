@@ -15,9 +15,9 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Type</th>
-                <th>Size</th>
-                <th>Actions</th>
+                <th>Typ</th>
+                <th>Größe</th>
+                <th>Löschen</th>
             </tr>
         </thead>
         <tbody>
@@ -60,9 +60,9 @@
           </button>
 
         <button type="button" class="btn btn-warning btn-s" (click)="cancel()" [disabled]="!httpEmitter">
-            <span class="glyphicon glyphicon-ban-circle"></span> Cancel 
+            <span class="glyphicon glyphicon-ban-circle"></span> Abbrechen
           </button>
         <button type="button" class="btn btn-danger btn-s" (click)="files.length=0" [disabled]="!files.length">
-            <span class="glyphicon glyphicon-trash"></span> Remove 
+            <span class="glyphicon glyphicon-trash"></span> Löschen 
           </button>
     </div>
