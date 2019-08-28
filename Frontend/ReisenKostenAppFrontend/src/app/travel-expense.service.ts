@@ -40,7 +40,7 @@ export class TravelExpenseService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post<Item>(`${this.url}/${id}/items`, item, httpOptions);
+    return this.http.post<Item>(this.url + id +'/items', item, httpOptions);
   }
 
 }
