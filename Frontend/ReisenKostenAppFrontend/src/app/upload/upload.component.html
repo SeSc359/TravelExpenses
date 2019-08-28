@@ -6,11 +6,11 @@
     <h3>Select Files</h3>
     <div class="inline-block">
         Bitte Anhänge/Dateien auswählen(max 10 MB).
-        <input ngfSelect multiple type="file" [(files)]="files" [accept]="accept" [maxSize]="maxSize" [(lastInvalids)]="lastInvalids" (filesChange)="lastFileAt=getDate()" />
+        <input ngfSelect type="file" [(files)]="files" [accept]="accept" [maxSize]="maxSize" [(lastInvalids)]="lastInvalids" (filesChange)="lastFileAt=getDate()" />
     </div>
 </div>
 <div style="margin-bottom: 40px">
-    <h3>{{ files.length }} Queued Files</h3>
+    <h3>{{ files.length }} Anhang</h3>
     <table class="table">
         <thead>
             <tr>
@@ -45,30 +45,24 @@
 
     <div>
         <div>
-            Queue progress:
-            <div class="progress" style="">
+            Fortschritt:
+            <div class="progress">
                 <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': progress + '%' }"></div>
             </div>
         </div>
 
-        <ng-container *ngIf="lastFileAt">
-            <p>
-                <strong>Last file(s) selected At:</strong> {{ lastFileAt | date : 'longTime' }}
-            </p>
-        </ng-container>
-
         <ng-container *ngIf="progress==100">
-            <i class="glyphicon glyphicon-ok"></i> &nbsp;Upload Complete
+            <i class="glyphicon glyphicon-ok"></i> &nbsp; Upload erfolgreich
         </ng-container>
 
         <button type="button" class="btn btn-success btn-s" (click)="uploadFiles()" [disabled]="!files.length">
-            <span class="glyphicon glyphicon-upload"></span> Upload all
+            <span class="glyphicon glyphicon-upload"></span> Upload 
           </button>
 
         <button type="button" class="btn btn-warning btn-s" (click)="cancel()" [disabled]="!httpEmitter">
-            <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+            <span class="glyphicon glyphicon-ban-circle"></span> Cancel 
           </button>
         <button type="button" class="btn btn-danger btn-s" (click)="files.length=0" [disabled]="!files.length">
-            <span class="glyphicon glyphicon-trash"></span> Remove all
+            <span class="glyphicon glyphicon-trash"></span> Remove 
           </button>
     </div>
