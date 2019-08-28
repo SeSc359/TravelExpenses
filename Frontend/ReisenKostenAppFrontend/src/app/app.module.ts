@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 
 import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,7 @@ import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-e
     HomeComponent, 
     ItemFormComponent,
     TravelExpensesDetailComponent,
- 
-  
-    
+    UploadComponent
 
   ],
   imports: [

@@ -1,18 +1,18 @@
 
 import { Item } from './Entity/Item';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TravelExpenseService {
 
   travelExpense: TravelExpense;
   travelExpenseList: TravelExpense[] = [];
-  selecteFile : File=null;
-
+  
   url: string = "http://localhost:8080/expenses/";
 
   constructor(private http: HttpClient) { }

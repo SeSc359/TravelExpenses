@@ -30,9 +30,20 @@ public class Attachment {
 	private String fileType;
 
 	@Lob
-	@Column(name = "file", columnDefinition = "BLOB")
+	@Column(name = "file", columnDefinition = "MEDIUMBLOB")
 	@JsonIgnore
 	private byte[] file;
+
+	public Attachment() {
+
+	}
+
+	public Attachment(String fileName, String fileType, byte[] file) {
+		super();
+		this.fileName = fileName;
+		this.fileType = fileType;
+		this.file = file;
+	}
 
 	@ManyToOne()
 	@JoinColumn(name = "item_Id")

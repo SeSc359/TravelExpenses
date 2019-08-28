@@ -1,0 +1,68 @@
+<ngfFormData [files]="files" postName="file" [(FormData)]="sendableFormData"></ngfFormData>
+
+<ngfUploadStatus [(percent)]="progress" [httpEvent]="httpEvent"></ngfUploadStatus>
+
+<div class="inline-block">
+    <h3>Select Files</h3>
+    <div class="inline-block">
+        Bitte Anhänge/Dateien auswählen(max 10 MB).
+        <input ngfSelect type="file" [(files)]="files" [accept]="accept" [maxSize]="maxSize" [(lastInvalids)]="lastInvalids" (filesChange)="lastFileAt=getDate()" />
+    </div>
+</div>
+<div style="margin-bottom: 40px">
+    <h3>{{ files.length }} Anhang</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Typ</th>
+                <th>Größe</th>
+                <th>Löschen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of files;let i=index">
+                <td>
+                    <div *ngIf="['image/gif','image/png','image/jpeg'].indexOf(item.type)>=0">
+                        <div class="previewIcon" [ngfBackground]="item"></div>
+                    </div>
+                    <strong>{{ item.name }}</strong>
+                </td>
+                <td nowrap>
+                    {{ item.type }}
+                </td>
+                <td nowrap>
+                    {{ item.size/1024/1024 | number:'.2' }} MB
+                </td>
+                <td nowrap>
+                    <button type="button" class="btn btn-danger btn-xs" (click)="files.splice(i,1)">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <div>
+            Fortschritt:
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': progress + '%' }"></div>
+            </div>
+        </div>
+
+        <ng-container *ngIf="progress==100">
+            <i class="glyphicon glyphicon-ok"></i> &nbsp; Upload erfolgreich
+        </ng-container>
+
+        <button type="button" class="btn btn-success btn-s" (click)="uploadFiles()" [disabled]="!files.length">
+            <span class="glyphicon glyphicon-upload"></span> Upload 
+          </button>
+
+        <button type="button" class="btn btn-warning btn-s" (click)="cancel()" [disabled]="!httpEmitter">
+            <span class="glyphicon glyphicon-ban-circle"></span> Abbrechen
+          </button>
+        <button type="button" class="btn btn-danger btn-s" (click)="files.length=0" [disabled]="!files.length">
+            <span class="glyphicon glyphicon-trash"></span> Löschen 
+          </button>
+    </div>
