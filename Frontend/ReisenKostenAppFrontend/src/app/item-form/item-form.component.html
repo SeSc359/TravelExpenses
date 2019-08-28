@@ -1,24 +1,5 @@
-<!-- <table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Monat</th>
-            <th scope="col">Jahr</th>
-           
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let travelExpense of travelExpenseList" >
-            <td scope="col" *ngIf="!isCreating" (click)="openForm()">{{travelExpense.id}}</td>
-            <td scope="col">{{travelExpense.month}}</td>
-            <td scope="col">{{travelExpense.year}}</td> 
-        </tr>
-    </tbody>
-</table>
+<form [formGroup]="itemForm" (ngSubmit)="itemSubmit()">
 
-
-<form [formGroup]="itemForm" (ngSubmit)="handleSubmit($event)">
-    
     <div class="col">
         <input type="date" class="form-control" placeholder="Datum" formControlName="date">
     </div>
@@ -27,17 +8,7 @@
     </div>
     <div class="col">
         <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
-    </div> -->
-    <!-- <div class="col">
-       <label for="exampleFormControlFile1">Bitte laden Sie ihre Belege hoch (mit aussagekräftigen Namen!)</label>
-       <input type="file" class="form-control-file" ngfSelect [(files)]="files"/> -->
-     
-    <app-upload></app-upload>
-    
-      
-<!-- <button type="submit" value="Upload" class="col"><span class="glyphicon glyphicon-upload" (click)="uploadFileToActivity()" ></span> Upload</button>   -->
-<!-- <button type="submit">submit</button>   
+    </div>
 
-</form> -->
-
-
+    <button type="submit" (onSubmit)="itemSubmit()">submit</button>
+</form>

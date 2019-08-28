@@ -8,21 +8,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-  SERVER_URL = "http://localhost:8080/travelexpense/attachment";
+  SERVER_URL = "http://localhost:8080/items/{id}/attachment";
   uploadForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
-      pfile: ['']
+      file: ['']
     });
   }
 
   onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.uploadForm.get('pfile').setValue(file);
+      this.uploadForm.get('file').setValue(file);
     }
   }
 
@@ -30,7 +30,7 @@ export class UploadComponent implements OnInit {
     // const httpOptions = {
     // headers: new HttpHeaders({'Content-Type': 'application/json'})};
     const formData = new FormData();
-    formData.append('file', this.uploadForm.get('pfile').value);
+    formData.append('file', this.uploadForm.get('file').value);
 
     this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
       // (res) => console.log(res),

@@ -14,9 +14,9 @@ import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-e
 const routes: Routes = [
   { path: '', redirectTo:'home',pathMatch:'full'},
   { path: 'home', component: HomeComponent},
-  { path: 'item', component: ItemFormComponent},
+  { path: 'expenses/:expenseId/items', component: ItemFormComponent},
   { path: 'status', component: StatusComponent },
-  { path: 'create', component: CreateTravelExpenseComponent},
+  { path: 'expenses/create', component: CreateTravelExpenseComponent},
   { path: 'expenselist', component: PastTravelExpensesComponent },
   { path: 'expenselist/:expenseId', component:TravelExpensesDetailComponent},
 

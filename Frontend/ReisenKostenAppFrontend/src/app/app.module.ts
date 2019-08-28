@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ngfModule } from "angular-file"
+import { ngfModule, ngf} from "angular-file"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StatusComponent } from './status/status.component';
@@ -13,6 +13,7 @@ import { ItemFormComponent } from './item-form/item-form.component';
 
 import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
 import { UploadComponent } from './upload/upload.component';
+import { EmailComponent } from './email/email.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,12 @@ import { UploadComponent } from './upload/upload.component';
     StatusComponent,
     CreateTravelExpenseComponent,
     PastTravelExpensesComponent,
-    HomeComponent,
- 
+    HomeComponent, 
     ItemFormComponent,
     TravelExpensesDetailComponent,
-    UploadComponent
+    UploadComponent,
+    EmailComponent,
+    
 
   ],
   imports: [
@@ -32,7 +34,8 @@ import { UploadComponent } from './upload/upload.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ngfModule
+    ngfModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

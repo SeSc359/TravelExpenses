@@ -1,19 +1,19 @@
 package com.travelexpanses.mail;
 
-import java.io.File;
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.mail.util.ByteArrayDataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.travelexpanses.entities.Attachment;
+import com.travelexpanses.entities.Item;
 import com.travelexpanses.entities.TravelExpense;
 
 @Service
@@ -59,22 +59,25 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 			helper.setTo(to);
 			helper.setSubject(subject);
 			helper.setText(text);
-			helper.setSentDate(Date.valueOf(LocalDate.now()));
+//			helper.setSentDate(Date.valueOf(LocalDate.now()));
 			message.setFrom("hajoklueten@gmail.com"); // Generalize Input of User Mail-Address
 
-//			List<Attachment> attachmentList = travelExpense.getAttachments();
-//			for (Attachment attachment : attachmentList) {
+			List<Item> itemList = travelExpense.getItemList();
+			for (Item item : itemList) {
+
+				List<Attachment> attachmentList = item.getAttachmentList();
+				for (Attachment attachment : attachmentList) {
 //				FileSystemResource file = new FileSystemResource(new File(attachment.getFilepath()));
+					byte[] attachmentData = attachment.getFile();
+					ByteArrayDataSource data = new ByteArrayDataSource(attachmentData, attachment.getFileType());
+					// TODO insert generated attachment title
 
-//				byte[] attachmentData = attachment.getFile();
-//				ByteArrayDataSource data = new ByteArrayDataSource(attachmentData, "image/jpeg");
-				// TODO insert generated attachment title
-
-//				helper.addAttachment(attachment.getFilename(), file);
-//			}
-			FileSystemResource file = new FileSystemResource(
-					new File("C:/Users/YGAdmin/Desktop/MailAttachments/nope.jpg"));
-			helper.addAttachment("yes.jpg", file);
+					helper.addAttachment(attachment.getFileName(), data);
+				}
+			}
+//			FileSystemResource file = new FileSystemResource(
+//					new File("C:/Users/YGAdmin/Desktop/MailAttachments/nope.jpg"));
+//			helper.addAttachment("yes.jpg", file);
 
 			emailSender.send(message);
 

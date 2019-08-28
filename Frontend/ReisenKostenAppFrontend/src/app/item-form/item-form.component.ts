@@ -1,8 +1,11 @@
-
-import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { TravelExpenseService } from '../travel-expense.service';
 import { Item } from '../Entity/Item';
+import { TravelExpenseService } from './../travel-expense.service';
+import { ngfModule, ngf } from "angular-file";
+import { FormGroup, FormBuilder} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-item-form',
@@ -12,80 +15,34 @@ import { Item } from '../Entity/Item';
 export class ItemFormComponent implements OnInit {
 
   itemForm: FormGroup;
-  Items: FormArray;
- 
-  ItemList: Item[];
-  Item : Item
-  isCreating: boolean = false;
+   travelExpenseList: TravelExpense[];
+  travelExpense: TravelExpense;
 
-  files: File[];
-  file: File;
-  error: string ="Not Funded"
-
-  constructor(private fb:FormBuilder,private travelExpenseService: TravelExpenseService) { }
+  itemList: Item[];
+  item: Item
   
-  openForm(){
-    this.isCreating = true;
-  }
- 
+  constructor(private fb: FormBuilder, private travelExpenseService: TravelExpenseService, private route: ActivatedRoute) { }
+
+  
+
   ngOnInit() {
-   // this.itemForm = this.fb.group({
-  //   id: [''],
-  //   date: [''],
-  //   description: [''],      
-  //   amount: [''],      
-   
-  // });
-  this.itemForm = this.fb.group({
-    Items: this.fb.array([ this.createItem() ])
-  });
-}
+    this.itemForm = this.fb.group({
+      id: [''],
+      date: [''],
+      description: [''],
+      amount: ['']
+  })
+  }
 
-createItem(): FormGroup {
-  return this.fb.group({
-    date: [''],
-    description: [''],      
-    amount: [''],
-  });
-}
+  itemSubmit() {
+    const item: Item = this.itemForm.value;
+    item.id = null;
+    const exId = +this.route.snapshot.paramMap.get('expenseId');
+    this.travelExpenseService.createItem(item, exId).subscribe(item => this.itemList.push(item));
+  }
 
-handleAddItem() {
-  this.Items = this.itemForm.get('Items') as FormArray;
-  this.Items.push(this.createItem());
-}
-
-// handleRemoveItem(i:number) {
-//   this.Items = this.itemForm.get('Items') as FormArray;
-//   this.Items.removeAt(i);
-// }
-
-  //  createItem(){
-  //   const Item: Item = this.itemForm.value;
-  //   Item.id = null;
-  //   this.travelExpenseService.createItem(Item).subscribe(Item => this.ItemList.push(Item));
-  //  }
-  
-  FileSelect(){
-  this.travelExpenseService.onFileSelected(event);
-}
- 
-   uploadFileToActivity() {
-     this.travelExpenseService.onUpload();   
- }
-
-handleSubmit(event: Event) {
-  // if (!this.itemForm.valid) {
-  //   console.warn("Form invalid");
-  //   return;
+  // attachmentSubmit() {
+  //   this.travelExpenseService.createAttachment(this.item, this.files).subscribe();
   // }
-  const Item: Item = this.itemForm.value;
-  Item.id = null;
-  this.travelExpenseService.submit(Item);
- 
 }
 
-
-
-   
-
-}
