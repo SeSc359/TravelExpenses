@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { from } from 'rxjs';
 import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'home',pathMatch:'full'},
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'create', component: CreateTravelExpenseComponent},
   { path: 'expenselist', component: PastTravelExpensesComponent },
   { path: 'expenselist/:expenseId', component:TravelExpensesDetailComponent},
+  { path: '**', component:ErrorPageComponent},
+
 
 ];
 

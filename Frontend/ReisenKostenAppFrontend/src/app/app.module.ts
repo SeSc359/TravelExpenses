@@ -13,6 +13,7 @@ import { UploaderAttachmentComponent } from './uploader-attachment/uploader-atta
 import { ItemFormComponent } from './item-form/item-form.component';
 
 import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-e
     HomeComponent,
     UploaderAttachmentComponent,
     ItemFormComponent,
-    TravelExpensesDetailComponent
+    TravelExpensesDetailComponent,
+    ErrorPageComponent
 
   ],
   imports: [
