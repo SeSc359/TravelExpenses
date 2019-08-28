@@ -48,7 +48,7 @@ export class ItemFormComponent implements OnInit {
   Email() {
     
     const item: Item = this.itemForm.value;
-    const exId = +this.route.snapshot.paramMap.get('expenseId');   
+    // const exId = +this.route.snapshot.paramMap.get('expenseId');   
     this.travelExpenseService.sendWithAttachment(item).subscribe();
 }
 }
