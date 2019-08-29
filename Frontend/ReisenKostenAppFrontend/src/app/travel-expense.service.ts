@@ -52,8 +52,8 @@ export class TravelExpenseService {
     return this.http.post<User>(`http://localhost:8080/user`, user, httpOptions);
   }
   
-  sendWithAttachment(item:Item): Observable<any> {
-    return this.http.post(this.url +'send',item);
+  sendWithAttachment(exId: number): Observable<any> {
+    return this.http.post(`http://localhost:8080/send/${exId}`, exId);
     // sendWithAttachment(item:Item, file :File): Observable<any> {
     // this.http.post("http://localhost:8080/send/{id}", file).subscribe();
     // this.travelExpenseService.getTravelExpenseById()

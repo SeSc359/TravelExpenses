@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { TravelExpenseService } from './../travel-expense.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,14 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MailComponent implements OnInit {
 
-  constructor(private travelExpenseService: TravelExpenseService) { }
+  constructor(private travelExpenseService: TravelExpenseService, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   sendMail(){    
     const exId = +this.route.snapshot.paramMap.get('expenseId');   
-    this.travelExpenseService.sendWithAttachment(item).subscribe();
+    this.travelExpenseService.sendWithAttachment(exId).subscribe();
 }
 
 }

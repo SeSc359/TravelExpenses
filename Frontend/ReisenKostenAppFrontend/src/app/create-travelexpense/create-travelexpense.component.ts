@@ -33,7 +33,7 @@ createExpense(){
   const userId = +this.route.snapshot.paramMap.get('userId');
   this.travelExpenseService.createTravelExpense(travelExpense, userId).subscribe(travelExpense => {
     //  this.travelExpenseList.push(travelExpense);
-     this.router.navigate([`/expenses/${travelExpense.id}/items/`]); }
+     this.router.navigate([`/user/${userId}/expenses/${travelExpense.id}/items/`]); }
   );
   
 }
