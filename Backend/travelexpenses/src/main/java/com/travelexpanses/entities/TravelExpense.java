@@ -29,7 +29,7 @@ public class TravelExpense {
 	private Long id;
 
 	@Column(name = "month")
-	private String month;
+	private Integer month;
 
 	@Column(name = "year")
 	private Integer year;
@@ -53,7 +53,7 @@ public class TravelExpense {
 	public TravelExpense() {
 	}
 
-	public TravelExpense(String month, Integer year, double costs, boolean status) {
+	public TravelExpense(Integer month, Integer year, double costs, boolean status) {
 		super();
 		this.month = month;
 		this.year = year;

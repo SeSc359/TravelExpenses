@@ -31,11 +31,11 @@ export class TravelExpenseService {
     return this.http.delete<TravelExpense>(`${this.url}/${id}`);
   }
 
-  createTravelExpense(travelExpense: TravelExpense): Observable<TravelExpense> {
+  createTravelExpense(travelExpense: TravelExpense, id: number): Observable<TravelExpense> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post<TravelExpense>(`${this.url}/create`, travelExpense, httpOptions);
+    return this.http.post<TravelExpense>(`http://localhost:8080/user/${id}/expenses`, travelExpense, httpOptions);
   }
 
   createItem(item: Item, id:number): Observable<Item> {

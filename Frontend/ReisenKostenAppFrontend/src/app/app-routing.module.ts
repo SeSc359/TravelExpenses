@@ -1,3 +1,4 @@
+import { ErrorComponent } from './error/error.component';
 import { UploadComponent } from './upload/upload.component';
 import { HomeComponent } from './home/home.component';
 
@@ -15,10 +16,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'expenses/:expenseId/items', component: ItemFormComponent},
   { path: 'status', component: StatusComponent },
-  { path: 'expenses/create', component: CreateTravelExpenseComponent},
+  { path: 'user/:userId/expenses', component: CreateTravelExpenseComponent},
   { path: 'expenselist', component: PastTravelExpensesComponent },
   { path: 'expenselist/:expenseId', component:TravelExpensesDetailComponent},
   { path: 'items/:itemId/attachment', component:UploadComponent},
+  { path: '**', component:ErrorComponent},
 ];
 
 @NgModule({

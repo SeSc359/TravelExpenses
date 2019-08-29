@@ -27,9 +27,10 @@ export class HomeComponent implements OnInit {
     const user: User = this.userForm.value;
     user.id = null;
     this.travelExpenseService.createUser(user).subscribe(user => { 
-      this.router.navigate([`/expenses/create`]); 
-    });
+      this.router.navigate([`/user/${user.id}/expenses/`]); }
+      );
+    }
 
   }
 
-}
+

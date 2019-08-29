@@ -27,9 +27,8 @@ export class ItemFormComponent implements OnInit {
       id: [''],
       date: [''],
       description: ['', Validators.required],
-      amount: ['', [Validators.required, Validators.min(0)]],
-      file: ['']
-  })
+      amount: ['', Validators.required]
+       })
   }
 
   itemSubmit() {

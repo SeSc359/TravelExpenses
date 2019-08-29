@@ -1,7 +1,7 @@
 export class TravelExpense {
 
     id: number; 
-    month: string;
+    month: number;
 	year: number;
 	costs: number;
     status: boolean; 

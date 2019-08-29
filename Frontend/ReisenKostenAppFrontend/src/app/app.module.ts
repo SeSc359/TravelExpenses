@@ -13,6 +13,8 @@ import { ItemFormComponent } from './item-form/item-form.component';
 
 import { TravelExpensesDetailComponent } from './travel-expenses-detail/travel-expenses-detail.component';
 import { UploadComponent } from './upload/upload.component';
+import { ErrorComponent } from './error/error.component';
+import { MailComponent } from './mail/mail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { UploadComponent } from './upload/upload.component';
     HomeComponent, 
     ItemFormComponent,
     TravelExpensesDetailComponent,
-    UploadComponent
+    UploadComponent,
+    ErrorComponent,
+    MailComponent
 
   ],
   imports: [
