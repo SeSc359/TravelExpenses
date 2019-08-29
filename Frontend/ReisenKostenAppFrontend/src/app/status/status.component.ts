@@ -25,11 +25,10 @@ export class StatusComponent implements OnInit {
       this.statuscolor = "yellow";
   }
 
-  
   delete(){
     const id = this.travelExpenseList.indexOf(this.travelExpense);
     this.travelExpenseList.splice(id, 1);
-    this.travelExpense.status=true;
+    this.travelExpenseService.satusChange(id).subscribe();
 }
   
   

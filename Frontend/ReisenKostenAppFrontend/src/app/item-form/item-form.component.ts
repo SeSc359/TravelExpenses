@@ -42,14 +42,8 @@ export class ItemFormComponent implements OnInit {
     });
 
   }
- 
-  
-  // attachmentSubmit() {
-  //   this.travelExpenseService.createAttachment(this.item, this.files).subscribe();
-  // }
 
   Email(){
-    
     const item: Item = this.itemForm.value;
     const exId = +this.route.snapshot.paramMap.get('expenseId');   
     this.travelExpenseService.sendWithAttachment(item).subscribe();

@@ -58,34 +58,10 @@ export class TravelExpenseService {
     // .subscribe(travelExpense=>(this.travelExpense= travelExpense));
   }
 
-  //  onFileSelected(event){
-  //    this.selecteFile =<File>event.target.files[0];
-  //  }
+  satusChange(id:number){
+    return this.http.put('http://localhost:8080/expenses'+id+'/status', {status:true})
+  }
+  }
 
-  //  onUpload(){
-  //    const fd = new FormData();
-  //    fd.append('file', this.selecteFile, this.selecteFile.name);
-  //    this.http.post("{this.url} + saveItem", fd,{
-  //      reportProgress:true,observe:'events'})
-  //      .subscribe(event=>{
-  //        if (event.type===HttpEventType.Response){
-  //          console.log(event);
-  //        }
-  //    });
-  //  }
 
-  //  submit(Item : Item) {
-  //   console.log(Item);
-    
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({'content-type': 'application/json'}),
-  //     responseType: 'arrayBuffer' as any
-  //   };
-
-  //   return this.http.post("http://localhost:8080//saveItem", Item, httpOptions);
-  // }
-  
- 
-
-}
 
