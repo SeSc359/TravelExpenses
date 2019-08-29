@@ -1,7 +1,6 @@
 import { TravelExpense } from './../Entity/TravelExpense';
 import { Item } from '../Entity/Item';
 import { TravelExpenseService } from './../travel-expense.service';
-import { ngfModule, ngf } from "angular-file";
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import { Component, OnInit } from '@angular/core';

@@ -1,6 +1,5 @@
+<form [formGroup]="itemForm" (onSubmit)="itemSubmit()">
 
-<form [formGroup]="itemForm" (onSubmit)= "itemSubmit()" (ngSubmit)="Email()">
-  
     <div class="col">
         <input type="date" class="form-control" placeholder="Datum" formControlName="date">
     </div>
@@ -22,8 +21,8 @@
         </div>
     </div>
 
-    <button type="submit" [disabled]="itemForm.invalid" (onSubmit)="itemSubmit()" (onSubmit)="Email()">submit</button>
+    <button type="submit" [disabled]="itemForm.invalid" (onSubmit)="itemSubmit()">submit</button>
 
-  <!-- <button type="submit" (onSubmit)="itemSubmit()" (onSubmit)="Email()">send Email</button> -->
-    
+    <!-- <button type="submit" (onSubmit)="itemSubmit()" (onSubmit)="Email()">send Email</button> -->
+
 </form>

@@ -76,13 +76,13 @@ public class TravelExpenseController {
 	}
 
 
-	@PostMapping("/send/{id}")
-	public void sendMailWithAttachment(@PathVariable long id) {
-
-		if (trexRepo.existsById(id)) {
-			TravelExpense trEx = trexRepo.findById(id).get();
-			mailService.sendMessageWithAttachment("hajoklueten@gmail.com", trEx);
-		}
-	}
+//	@PostMapping("/send/{id}")
+//	public void sendMailWithAttachment(@PathVariable long id) {
+//
+//		if (trexRepo.existsById(id)) {
+//			TravelExpense trEx = trexRepo.findById(id).get();
+//			mailService.sendMessageWithAttachment("hajoklueten@gmail.com", trEx);
+//		}
+//	}
 
 }
