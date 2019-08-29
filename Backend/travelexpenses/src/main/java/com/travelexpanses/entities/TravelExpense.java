@@ -30,7 +30,7 @@ public class TravelExpense {
 	private Integer staffNumber;
 
 	@Column(name = "month")
-	private String month;
+	private Integer month;
 
 	@Column(name = "year")
 	private Integer year;
@@ -40,7 +40,6 @@ public class TravelExpense {
 
 	@Column(name = "status")
 	private boolean status; // false = inProgress, true = Done.
-
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "travelExpense", fetch = FetchType.EAGER)
 	@JsonBackReference
