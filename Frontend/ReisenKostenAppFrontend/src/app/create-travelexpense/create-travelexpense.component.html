@@ -1,13 +1,13 @@
-<p>Eingabeformular. Bitte geben Sie zunächst den Monat und das Jahr für die Abrechnung ein, danach die jeweiligen Einzelposten samt Anhang.
+<p>Eingabeformular. Bitte geben Sie zunächst den Monat und das Jahr für die Abrechnung ein, danach werden Sie weitergeleitet, um die jeweiligen Einzelposten samt Anhang anzugeben.
 </p>
 <form [formGroup]="expenseForm" (ngSubmit)="createExpense()">
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Monat" formControlName="month">
+            <input type="text" class="form-control" placeholder="Monat (1-12)" formControlName="month">
         </div>
         <div class="col">
             <input type="text" class="form-control" placeholder="Jahr" formControlName="year">
         </div>
     </div>
-    <button type="submit" value="Abschicken" class="col" (onSubmit)="createExpense()">Submit</button>
+    <button type="submit" value="Abschicken" class="col" (onSubmit)="createExpense()">Einzelposten hinzufügen</button>
 </form>

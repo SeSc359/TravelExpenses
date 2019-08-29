@@ -1,7 +1,8 @@
 <h1>Willkommen bei TreX!</h1>
 <br>
 <div>
-    <p> Bei uns können Sie ihre Reisekostenabrechnung schnell per Mail versenden, ihren aktuellen Status einsehen und die vergangenen Abrechnungen einsehen.</p>
+    <p>Reisekostenabrechnung per Mail.</p>
+    <p>Geben Sie zunächst Ihren Namen und Personalnummer an sowie die Emailadresse, an die ihre Abrechnung verschickt werden soll.</p>
 </div>
 <form [formGroup]="userForm" (ngSubmit)="userSubmit()">
     <div class="col">
@@ -19,17 +20,17 @@
     <input type="email" class="form-control" placeholder="Emailadresse" formControlName="email">
 </label>
     </div>
-    <button type="submit" (onSubmit)="userSubmit()">submit</button>
+    <button type="submit" (onSubmit)="userSubmit()">Abrechnung erstellen</button>
 </form>
-
-<div style="float: left; width: 15em; height: 15em;">
-    <h5 routerLink="../expenses/create">Jetzt eine neue Monatsabrechnung erstellen und versenden</h5>
-</div>
-<div style="float: left;width: 15em; height: 15em; ">
-    <h5 routerLink="../status">Dein Status der aktuellen Abrechnung</h5>
-</div>
-<div style="float: left;width: 15em; height: 15em; ">
-    <h5 routerLink="../expenselist">Schau Dir deine vergangenen Abrechnungen an!</h5>
-</div>
-
 <br>
+<!-- <div style="float: left; width: 15em; height: 15em;">
+    <h5 routerLink="../expenses/create">Neue Monatsabrechnung erstellen</h5>
+</div> -->
+<!-- <div style="float: left;width: 15em; height: 15em; ">
+    <h5 routerLink="../status">Status der aktuellen Abrechnungen</h5>
+</div>
+<div style="float: left;width: 15em; height: 15em; ">
+    <h5 routerLink="../expenselist">Vergangene Abrechnungen</h5>
+</div>
+
+<br> -->

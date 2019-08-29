@@ -1,3 +1,5 @@
+<p> Bitte geben Sie das genaue Datum ein, eine Beschreibung des Einzelpostens sowie den Betrag.</p>
+<br>
 <form [formGroup]="itemForm" (ngSubmit)="itemSubmit()">
 
     <div class="col">
@@ -21,7 +23,7 @@
         </div>
     </div>
 
-    <button type="submit" [disabled]="itemForm.invalid" (onSubmit)="itemSubmit()">submit</button>
+    <button type="submit" [disabled]="itemForm.invalid" (onSubmit)="itemSubmit()">Anhang hinzufügen</button>
 
     <!-- <button type="submit" (onSubmit)="itemSubmit()" (onSubmit)="Email()">send Email</button> -->
 

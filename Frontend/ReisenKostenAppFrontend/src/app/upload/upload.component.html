@@ -3,9 +3,8 @@
 <ngfUploadStatus [(percent)]="progress" [httpEvent]="httpEvent"></ngfUploadStatus>
 
 <div class="inline-block">
-    <h3>Select Files</h3>
     <div class="inline-block">
-        Bitte Anhänge/Dateien auswählen(max 10 MB).
+        Bitte Anhänge(Belege) auswählen(max 10 MB).
         <input ngfSelect type="file" [(files)]="files" [accept]="accept" [maxSize]="maxSize" [(lastInvalids)]="lastInvalids" (filesChange)="lastFileAt=getDate()" />
     </div>
 </div>

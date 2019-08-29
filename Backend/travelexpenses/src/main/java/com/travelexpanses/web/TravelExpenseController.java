@@ -90,7 +90,7 @@ public class TravelExpenseController {
 
 		if (trexRepo.existsById(id)) {
 			TravelExpense trEx = trexRepo.findById(id).get();
-			mailService.sendMessageWithAttachment("hajoklueten@gmail.com", trEx);
+			mailService.sendMessageWithAttachment("kramer.seb@gmx.de", trEx);
 		}
 	}
 
