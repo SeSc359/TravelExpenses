@@ -1,6 +1,7 @@
 package com.travelexpanses.web;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -48,7 +49,7 @@ public class ItemController {
 		return ResponseEntity.of(item);
 	}
 
-	@PostMapping("expenses/{expenseId}/items")
+	@PostMapping("/expenses/{expenseId}/items")
 	public Item createItem(@RequestBody @Valid Item item, @PathVariable long expenseId) {
 		item.setId(null);
 		Optional<TravelExpense> expense = travelExpenseRepo.findById(expenseId);
@@ -56,6 +57,11 @@ public class ItemController {
 			item.setTravelExpense(expense.get());
 		}
 		return itemRepo.save(item);
+	}
+
+	@GetMapping("/expenses/{expenseId}/items")
+	public List<Item> findByTravelExpenseId(@PathVariable Long expenseId) {
+		return itemRepo.findByTravelExpenseId(expenseId);
 	}
 
 //	@PostMapping("/items")
@@ -87,34 +93,6 @@ public class ItemController {
 		return ResponseEntity.notFound().build();
 	}
 
-//	@PostMapping("items/{id}/attachment")
-//	public Attachment insertAttachments(@PathVariable long id, @RequestBody Attachment attachment) {
-//		attachment.setId(null);
-//		// TODO set item-id by pathvariable
-//		Optional<Item> item = itemRepo.findById(id);
-//		if (item.isPresent()) {
-//			attachment.setItem(item.get());
-//		}
-//		return attachmentRepo.save(attachment);
-//	}
-
-//	@PutMapping("items/{itemId}/attachment/{id}")
-//	public ResponseEntity<Attachment> updateFile(@PathVariable long id, @RequestParam("file") MultipartFile file) {
-//		if (attachmentRepo.existsById(id)) {
-//			Attachment attachmentById = attachmentRepo.findById(id).get();
-//			attachmentById.setFileType(file.getContentType());
-//			attachmentById.setFileName(file.getOriginalFilename());
-//			try {
-//				attachmentById.setFile(file.getBytes());
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//			attachmentRepo.save(attachmentById);
-//			return ResponseEntity.ok().build();
-//
-//		}
-//		return ResponseEntity.notFound().build();
-//	}
 
 	@GetMapping("items/{itemId}/attachment/{id}")
 	public ResponseEntity<?> getAttachmentFile(@PathVariable int id, @PathVariable long itemId) {

@@ -23,6 +23,7 @@ import com.travelexpanses.repository.AttachmentRepository;
 import com.travelexpanses.repository.ItemRepository;
 import com.travelexpanses.repository.TravelExpenseRepository;
 import com.travelexpanses.repository.UserRepository;
+import com.travelexpanses.service.TrexService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping()
@@ -42,11 +43,24 @@ public class TravelExpenseController {
 	UserRepository userRepo;
 
 	@Autowired
+	TrexService trexService;
+
+	@Autowired
 	TravelExpensesMailServiceImpl mailService;
 
 	@GetMapping("/expenses")
 	public Iterable<TravelExpense> index() {
-		return trexRepo.findAll();
+		Iterable<TravelExpense> expenseListWithCosts = trexRepo.findAll();
+		for (TravelExpense element : expenseListWithCosts) {
+			element.setCosts(trexService.totalCosts(element));
+		}
+		return expenseListWithCosts;
+	}
+
+	@GetMapping("/expenses/{expenseId}/costs")
+	public Double getTotalCosts(@PathVariable Long expenseId) {
+		TravelExpense trex = trexRepo.findById(expenseId).get();
+		return trexService.totalCosts(trex);
 	}
 
 	@GetMapping("/expenses/{id}")
@@ -87,11 +101,9 @@ public class TravelExpenseController {
 
 	@PostMapping("/send/{id}")
 	public void sendMailWithAttachment(@PathVariable long id) {
-
 		if (trexRepo.existsById(id)) {
 			TravelExpense trEx = trexRepo.findById(id).get();
 			mailService.sendMessageWithAttachment("kramer.seb@gmx.de", trEx);
 		}
 	}
-
 }

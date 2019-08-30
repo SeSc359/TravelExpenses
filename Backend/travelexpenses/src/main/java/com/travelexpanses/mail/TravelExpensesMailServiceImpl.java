@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.travelexpanses.entities.Attachment;
 import com.travelexpanses.entities.Item;
 import com.travelexpanses.entities.TravelExpense;
+import com.travelexpanses.service.TrexService;
 
 @Service
 public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService {
@@ -25,6 +26,9 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 	@Autowired
 	public JavaMailSender emailSender;
 	
+	@Autowired
+	TrexService trexService;
+
 	@Override
 	public void sendSimpleMessage(String to, String subject, String text) {
 		SimpleMailMessage message = new SimpleMailMessage();
@@ -54,7 +58,7 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 			
 			String subject = "Neue Reisekostenrechnung";
 			String text = travelExpense.getUser().getName().toString() + " hat neue Reisekostenrechung über Betrag "
-					+ travelExpense.getCosts() + " hinzugefügt.";
+					+ trexService.totalCosts(travelExpense) + " hinzugefügt.";
 			helper.setTo(to);
 			helper.setSubject(subject);
 			helper.setText(text);
