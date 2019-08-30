@@ -15,7 +15,7 @@ export class TravelExpenseService {
   travelExpense: TravelExpense;
   travelExpenseList: TravelExpense[] = [];
   
-  url: string = "http://localhost:8080/expenses/";
+  url: string = "http://localhost:8080/expenses";
 
   constructor(private http: HttpClient) { }
 
@@ -38,11 +38,19 @@ export class TravelExpenseService {
     return this.http.post<TravelExpense>(`http://localhost:8080/user/${id}/expenses`, travelExpense, httpOptions);
   }
 
+  getItemsByTrexId (trexId: number) {
+      return this.http.get<Item[]>(`${this.url}/${trexId}/items`)
+  }
+
+  getTotalCosts (trexId: number) {
+    return this.http.get<number>(`${this.url}/${trexId}/costs`)
+  }
+
   createItem(item: Item, id:number): Observable<Item> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post<Item>(this.url + id +'/items', item, httpOptions);
+    return this.http.post<Item>(`${this.url}/${id}/items`, item, httpOptions);
   }
 
   createUser(user: User): Observable<User> {

@@ -1,14 +1,31 @@
 <div *ngIf="travelExpense">
     Monat: {{ travelExpense.month }} <br> Jahr: {{ travelExpense.year }} <br> Betrag: {{ travelExpense.costs }} <br>
     <div class="card">
-        <img class="card-img-top" src="" alt="image of expense receipt" />
+
         <div class="card-body">
-            <h5 class="card-title">item title?</h5>
-            <p class="card-text">
-                ID: {{item.id}} Beschreibung {{item.description}}
-            </p>
+            <h5 class="card-title">Itemdetails</h5>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Beschreibung</th>
+                        <th scope="col">Betrag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of itemList">
+                        <td scope="col">{{item.id}}</td>
+                        <td scope="col">{{item.date | date: 'dd.MM.yyyy'}}</td>
+                        <td scope="col">{{item.description}}</td>
+
+                        <td scope="col">{{item.amount}}€</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
-
-
     </div>
 </div>
