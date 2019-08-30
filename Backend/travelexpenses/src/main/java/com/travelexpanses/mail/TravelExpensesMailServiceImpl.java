@@ -55,7 +55,7 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 
 			String subject = "Neue Reisekostenrechnung";
 			String text = travelExpense.getStaffNumber().toString() + " hat neue Reisekostenrechung über Betrag "
-					+ travelExpense.getCosts() + " hinzugefügt.";
+					+ totalCosts(travelExpense.getItemList()) + " hinzugefügt.";
 			helper.setTo(to);
 			helper.setSubject(subject);
 			helper.setText(text);
@@ -85,6 +85,14 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 			e.printStackTrace();
 		}
 
+	}
+
+	private double totalCosts(List<Item> itemList) {
+		double totalCosts = 0.0;
+		for (Item item : itemList) {
+			totalCosts += item.getAmount();
+		}
+		return totalCosts;
 	}
 
 }

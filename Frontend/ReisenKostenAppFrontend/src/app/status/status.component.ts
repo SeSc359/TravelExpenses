@@ -28,8 +28,10 @@ export class StatusComponent implements OnInit {
   
   delete(){
     const id = this.travelExpenseList.indexOf(this.travelExpense);
+    // this.travelExpenseService.updateStatus(this.travelExpense.id, true).subscribe();
     this.travelExpenseList.splice(id, 1);
     this.travelExpense.status=true;
+
 }
   
   

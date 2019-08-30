@@ -29,6 +29,13 @@ export class TravelExpenseService {
     return this.http.delete<TravelExpense>(`${this.url}/${id}`);
   }
 
+  updateStatus(id:number,updateStatusDto:boolean):Observable<TravelExpense>{
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.put<TravelExpense>(`${this.url}/${id}`, updateStatusDto, httpOptions);
+  }
+
   createTravelExpense(travelExpense: TravelExpense): Observable<TravelExpense> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })

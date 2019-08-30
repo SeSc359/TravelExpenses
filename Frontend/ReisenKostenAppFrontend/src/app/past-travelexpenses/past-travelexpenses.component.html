@@ -11,7 +11,7 @@
 
     </thead>
     <tbody *ngFor="let travelExpense of travelExpenseList">
-        <tr *ngIf="travelExpense.status==true" routerLink="../expenselist/{{travelExpense.id}}">
+        <tr routerLink="../expenselist/{{travelExpense.id}}">
             <td scope="col">{{travelExpense.id}}</td>
             <td scope="col">{{travelExpense.month}}</td>
             <td scope="col">{{travelExpense.year}}</td>
