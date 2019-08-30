@@ -4,5 +4,5 @@ class TravelExpense {
     month: number;
 	year: number;
 	costs: number;
-    status: boolean; 
+    status: boolean =false; 
 }

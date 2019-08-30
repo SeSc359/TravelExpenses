@@ -39,7 +39,7 @@ public class TravelExpense {
 	private double costs;
 
 	@Column(name = "status")
-	private boolean status; // false = inProgress, true = Done.
+	private boolean status =false; // false = inProgress, true = Done.
 
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "travelExpense", fetch = FetchType.EAGER)

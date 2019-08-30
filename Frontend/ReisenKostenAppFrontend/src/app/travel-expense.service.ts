@@ -57,11 +57,14 @@ export class TravelExpenseService {
     // this.travelExpenseService.getTravelExpenseById()
     // .subscribe(travelExpense=>(this.travelExpense= travelExpense));
   }
-
-  satusChange(id:number){
-    return this.http.put('http://localhost:8080/expenses'+id+'/status', {status:true})
+  myHttpHead = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  statusChange(expenseId:number){
+    const body = {"status":true};
+    return this.http.put(`${this.url}${expenseId}/status`,body, this.myHttpHead);
+  
   }
   }
+  
 
 
 

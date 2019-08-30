@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { TravelExpenseService } from './../travel-expense.service';
 
 
@@ -10,25 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatusComponent implements OnInit {
   
-
+  
   statuscolor='red';
   travelExpenseList: TravelExpense[];
   travelExpense: TravelExpense;
 
-  constructor(private travelExpenseService: TravelExpenseService) { }
+  constructor(private travelExpenseService: TravelExpenseService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.travelExpenseService.getTravelExpenseList().subscribe(travelExpenses=>(this.travelExpenseList = travelExpenses));
   }
-
+  
   statusChange() {
-      this.statuscolor = "yellow";
+     
+     this.statuscolor = 'yellow';
   }
 
   delete(){
-    const id = this.travelExpenseList.indexOf(this.travelExpense);
-    this.travelExpenseList.splice(id, 1);
-    this.travelExpenseService.satusChange(id).subscribe();
+    
+    const exId = this.travelExpenseList.indexOf(this.travelExpense);
+    // this.travelExpenseService.statusChange(exId).subscribe(()=>this.travelExpenseList.splice(exId, 1));
+    this.travelExpenseList.splice(exId, 1);
+    // this.travelExpenseService.statusChange(id,true);
 }
   
   

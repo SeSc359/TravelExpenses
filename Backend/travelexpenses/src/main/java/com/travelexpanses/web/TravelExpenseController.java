@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.travelexpanses.entities.TravelExpense;
 import com.travelexpanses.entities.UpdateStatusDto;
@@ -61,18 +63,27 @@ public class TravelExpenseController {
 	}
 
 
+//	@PutMapping("/{expenseId}/status")
+//	public ResponseEntity<?> updateTravelExpenseStatus(@PathVariable long expenseId,
+//			@RequestBody UpdateStatusDto updateStatusDto) {
+//		Optional<TravelExpense> expenseOptional = trexRepo.findById(expenseId);
+//	if (expenseOptional.isPresent()) {
+//			TravelExpense expense = expenseOptional.get();
+//			expense.setStatus(updateStatusDto.isStatus());
+//			trexRepo.save(expense);
+//			return ResponseEntity.ok().build();
+//		} else {
+//			return ResponseEntity.notFound().build();
+//		}
+//	}
+	
 	@PutMapping("/{expenseId}/status")
-	public ResponseEntity<?> updateTravelExpenseStatus(@PathVariable long expenseId,
-			@RequestBody UpdateStatusDto updateStatusDto) {
-		Optional<TravelExpense> expenseOptional = trexRepo.findById(expenseId);
-		if (expenseOptional.isPresent()) {
-			TravelExpense expense = expenseOptional.get();
-			expense.setStatus(updateStatusDto.isStatus());
-			trexRepo.save(expense);
-			return ResponseEntity.ok().build();
-		} else {
-			return ResponseEntity.notFound().build();
+	public ResponseEntity<TravelExpense> update(@PathVariable Long id,@Valid @RequestBody TravelExpense trex) {
+		if (trexRepo.existsById(id)) {
+			trex.setId(id);
+			return ResponseEntity.ok(trexRepo.save(trex));
 		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();	
 	}
 
 
