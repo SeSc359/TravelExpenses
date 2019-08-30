@@ -2,7 +2,8 @@
 <br>
 <div>
     <p>Reisekostenabrechnung per Mail.</p>
-    <p>Geben Sie zunächst Ihren Namen und Personalnummer an sowie die Emailadresse, an die ihre Abrechnung verschickt werden soll.</p>
+    <p>Geben Sie zunächst Ihren Namen und Personalnummer an sowie die Emailadresse, an die ihre Abrechnung verschickt werden soll. </p>
+       <p> Es kann bisher nur ein User erstellt werden.</p>
 </div>
 <form [formGroup]="userForm" (ngSubmit)="userSubmit()">
     <div class="col">
@@ -23,14 +24,3 @@
     <button type="submit" (onSubmit)="userSubmit()">Abrechnung erstellen</button>
 </form>
 <br>
-<!-- <div style="float: left; width: 15em; height: 15em;">
-    <h5 routerLink="../expenses/create">Neue Monatsabrechnung erstellen</h5>
-</div> -->
-<!-- <div style="float: left;width: 15em; height: 15em; ">
-    <h5 routerLink="../status">Status der aktuellen Abrechnungen</h5>
-</div>
-<div style="float: left;width: 15em; height: 15em; ">
-    <h5 routerLink="../expenselist">Vergangene Abrechnungen</h5>
-</div>
-
-<br> -->

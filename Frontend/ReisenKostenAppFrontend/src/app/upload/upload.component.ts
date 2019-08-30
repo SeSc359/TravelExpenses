@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs'
 import {
@@ -39,7 +39,7 @@ export class UploadComponent implements OnInit {
   maxSize: 10000000;
   baseDropValid:any
  
-  constructor(private HttpClient: HttpClient, private route: ActivatedRoute){}
+  constructor(private HttpClient: HttpClient, private route: ActivatedRoute, private router: Router){}
  
   cancel(){
     this.progress = 0
@@ -73,6 +73,11 @@ export class UploadComponent implements OnInit {
  
   getDate(){
     return new Date()
+  }
+
+  gotoDetailSend() {
+    const exId = +this.route.snapshot.paramMap.get('expenseId');
+    this.router.navigate([`/expenselist/${exId}/`]);
   }
   
  

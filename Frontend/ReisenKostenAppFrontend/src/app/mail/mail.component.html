@@ -1,2 +1,4 @@
 <br>
 <button type="submit" (click)="sendMail()">Mail mit zusammengerechnetem Betrag und Anhang versenden</button>
+
+<ng-template [ngIf]="sent"><div><h3>Erfolg! Vielen Dank für die Einreichung.</h3></div></ng-template>
