@@ -3,7 +3,7 @@
 <div>
     <p> Bei uns können Sie ihre Reisekostenabrechnung schnell per Mail versenden, ihren aktuellen Status einsehen und die vergangenen Abrechnungen einsehen.</p>
 </div>
-<form [formGroup]="personalForm">
+<form [formGroup]="userForm" (ngSubmit)="userSubmit()">
     <div class="col">
         <label>
     <input type="text" class="form-control" placeholder="Name" formControlName="name">
@@ -11,14 +11,15 @@
     </div>
     <div class="col">
         <label>
-        <input type="text" class="form-control" placeholder="Personalnummer" formControlName="staffNumber">
+        <input type="number" class="form-control" placeholder="Personalnummer" formControlName="staffNumber">
     </label>
     </div>
     <div class="col">
         <label>
-    <input type="text" class="form-control" placeholder="Emailadresse" formControlName="email">
+    <input type="email" class="form-control" placeholder="Emailadresse" formControlName="email">
 </label>
     </div>
+    <button type="submit" (onSubmit)="userSubmit()">submit</button>
 </form>
 
 <div style="float: left; width: 15em; height: 15em;">

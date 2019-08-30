@@ -1,6 +1,6 @@
-class TravelExpense {
-    id: number;
-    name: string;
+export class TravelExpense {
+
+    id: number; 
     month: number;
 	year: number;
 	costs: number;

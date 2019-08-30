@@ -33,7 +33,6 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 		message.setText(text);
 		message.setFrom("hajoklueten@gmail.com");
 		emailSender.send(message);
-
 	}
 
 	@Override
@@ -54,20 +53,19 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 			helper = new MimeMessageHelper(message, true);
 
 			String subject = "Neue Reisekostenrechnung";
-			String text = travelExpense.getStaffNumber().toString() + " hat neue Reisekostenrechung über Betrag "
+			String text = travelExpense.getUser().getName().toString() + " hat neue Reisekostenrechung über Betrag "
 					+ totalCosts(travelExpense.getItemList()) + " hinzugefügt.";
 			helper.setTo(to);
 			helper.setSubject(subject);
 			helper.setText(text);
-//			helper.setSentDate(Date.valueOf(LocalDate.now()));
-			message.setFrom("hajoklueten@gmail.com"); // Generalize Input of User Mail-Address
+			message.setFrom(travelExpense.getUser().getEmail()); // Generalize Input of User Mail-Address
 
 			List<Item> itemList = travelExpense.getItemList();
 			for (Item item : itemList) {
 
 				List<Attachment> attachmentList = item.getAttachmentList();
 				for (Attachment attachment : attachmentList) {
-//				FileSystemResource file = new FileSystemResource(new File(attachment.getFilepath()));
+
 					byte[] attachmentData = attachment.getFile();
 					ByteArrayDataSource data = new ByteArrayDataSource(attachmentData, attachment.getFileType());
 					// TODO insert generated attachment title
@@ -75,16 +73,11 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 					helper.addAttachment(attachment.getFileName(), data);
 				}
 			}
-//			FileSystemResource file = new FileSystemResource(
-//					new File("C:/Users/YGAdmin/Desktop/MailAttachments/nope.jpg"));
-//			helper.addAttachment("yes.jpg", file);
-
 			emailSender.send(message);
 
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	private double totalCosts(List<Item> itemList) {

@@ -1,3 +1,4 @@
+import { TravelExpense } from './../Entity/TravelExpense';
 import { TravelExpenseService } from './../travel-expense.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -14,14 +15,14 @@ export class CreateTravelExpenseComponent implements OnInit {
   expenseForm: FormGroup;
   travelExpenseList: TravelExpense[];
 
-  constructor(private fb:FormBuilder, private travelExpenseService: TravelExpenseService, private router: Router) { }
+  constructor(private fb:FormBuilder, private route: ActivatedRoute, private travelExpenseService: TravelExpenseService, private router: Router) { }
 
   ngOnInit() {
 
     this.expenseForm = this.fb.group({
       id: [''],
-      month: ['', Validators.required, Validators.min(1), Validators.max(12)],
-      year: ['', Validators.required, Validators.minLength(4),Validators.maxLength(4)],
+      month: ['', Validators.required],
+      year: ['', Validators.required],
       status: ['false']
     })   
 }
@@ -29,9 +30,10 @@ export class CreateTravelExpenseComponent implements OnInit {
 createExpense(){
   const travelExpense: TravelExpense = this.expenseForm.value;
   travelExpense.id = null;
-  this.travelExpenseService.createTravelExpense(travelExpense).subscribe(travelExpense => {
+  const userId = +this.route.snapshot.paramMap.get('userId');
+  this.travelExpenseService.createTravelExpense(travelExpense, userId).subscribe(travelExpense => {
     //  this.travelExpenseList.push(travelExpense);
-     this.router.navigate([`/expenses/${travelExpense.id}/items/`]); }
+     this.router.navigate([`/user/${userId}/expenses/${travelExpense.id}/items/`]); }
   );
   
 }

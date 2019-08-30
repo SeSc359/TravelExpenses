@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,11 +28,8 @@ public class TravelExpense {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "staffNumber")
-	private Integer staffNumber;
-
 	@Column(name = "month")
-	private String month;
+	private Integer month;
 
 	@Column(name = "year")
 	private Integer year;
@@ -46,13 +45,16 @@ public class TravelExpense {
 	@JsonBackReference
 	private List<Item> itemList;
 
+	@ManyToOne()
+	@JoinColumn(name = "user_Id")
+	private User user;
+
 	// Constructor
 	public TravelExpense() {
 	}
 
-	public TravelExpense(Integer staffNumber, String month, Integer year, double costs, boolean status) {
+	public TravelExpense(Integer month, Integer year, double costs, boolean status) {
 		super();
-		this.staffNumber = staffNumber;
 		this.month = month;
 		this.year = year;
 		this.costs = costs;

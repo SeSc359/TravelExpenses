@@ -1,6 +1,6 @@
+import { TravelExpense } from './../Entity/TravelExpense';
 import { Item } from '../Entity/Item';
 import { TravelExpenseService } from './../travel-expense.service';
-import { ngfModule, ngf } from "angular-file";
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +19,7 @@ export class ItemFormComponent implements OnInit {
 
   itemList: Item[];
   item: Item
-
+  
   constructor(private fb: FormBuilder, private travelExpenseService: TravelExpenseService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -27,18 +27,18 @@ export class ItemFormComponent implements OnInit {
       id: [''],
       date: [''],
       description: ['', Validators.required],
-      amount: ['', [Validators.required, Validators.min(0)]],
-      file: ['']
-  })
+      amount: ['', Validators.required]
+       })
   }
 
   itemSubmit() {
     const item: Item = this.itemForm.value;
     item.id = null;
+    const userId = +this.route.snapshot.paramMap.get('userId');
     const exId = +this.route.snapshot.paramMap.get('expenseId');
     this.travelExpenseService.createItem(item, exId).subscribe(item => { 
       // this.itemList.push(item); 
-      this.router.navigate([`/items/${item.id}/attachment/`]); 
+      this.router.navigate([`/user/${userId}/expenses/${exId}/items/${item.id}/attachment/`]); 
     });
 
   }
@@ -48,11 +48,6 @@ export class ItemFormComponent implements OnInit {
   //   this.travelExpenseService.createAttachment(this.item, this.files).subscribe();
   // }
 
-  Email(){
-    
-    const item: Item = this.itemForm.value;
-    const exId = +this.route.snapshot.paramMap.get('expenseId');   
-    this.travelExpenseService.sendWithAttachment(item).subscribe();
-}
+ 
 }
 

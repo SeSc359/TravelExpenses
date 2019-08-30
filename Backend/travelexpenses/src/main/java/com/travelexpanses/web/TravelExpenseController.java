@@ -17,13 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.travelexpanses.entities.TravelExpense;
 import com.travelexpanses.entities.UpdateStatusDto;
+import com.travelexpanses.entities.User;
 import com.travelexpanses.mail.TravelExpensesMailServiceImpl;
 import com.travelexpanses.repository.AttachmentRepository;
 import com.travelexpanses.repository.ItemRepository;
 import com.travelexpanses.repository.TravelExpenseRepository;
+import com.travelexpanses.repository.UserRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/expenses")
+@RequestMapping()
 @RestController
 public class TravelExpenseController {
 
@@ -37,14 +39,17 @@ public class TravelExpenseController {
 	ItemRepository itemRepo;
 
 	@Autowired
+	UserRepository userRepo;
+
+	@Autowired
 	TravelExpensesMailServiceImpl mailService;
 
-	@GetMapping()
+	@GetMapping("/expenses")
 	public Iterable<TravelExpense> index() {
 		return trexRepo.findAll();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/expenses/{id}")
 	public ResponseEntity<TravelExpense> showExpenseById(@PathVariable Long id) {
 		Optional<TravelExpense> pickedExpense = trexRepo.findById(id);
 		if (pickedExpense.isPresent()) {
@@ -54,15 +59,19 @@ public class TravelExpenseController {
 		}
 	}
 
-	@PostMapping("/create")
-	public TravelExpense insertNewTravelExpense(@RequestBody @Valid TravelExpense trex) {
+	@PostMapping("/user/{userId}/expenses")
+	public TravelExpense insertNewTravelExpense(@RequestBody @Valid TravelExpense trex, @PathVariable Long userId) {
 		trex.setId(null);
+		Optional<User> user = userRepo.findById(userId);
+		if (user.isPresent()) {
+			trex.setUser(user.get());
+		}
 		return trexRepo.save(trex);
 	}
 
 
 	@PutMapping("/{expenseId}/status")
-	public ResponseEntity<?> updateTravelExpenseStatus(@PathVariable long expenseId,
+	public ResponseEntity<?> updateTravelExpenseStatus(@PathVariable Long expenseId,
 			@RequestBody UpdateStatusDto updateStatusDto) {
 		Optional<TravelExpense> expenseOptional = trexRepo.findById(expenseId);
 		if (expenseOptional.isPresent()) {
