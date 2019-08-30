@@ -1,0 +1,31 @@
+<div *ngIf="travelExpense">
+    <div class="card">
+
+        <div class="card-body">
+            <h5 class="card-title">Einzelposten für die Abrechnung {{travelExpense.month}}/{{travelExpense.year}}</h5>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Beschreibung</th>
+                        <th scope="col">Betrag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of itemList">
+                        <td scope="col">{{item.id}}</td>
+                        <td scope="col">{{item.date | date: 'dd.MM.yyyy'}}</td>
+                        <td scope="col">{{item.description}}</td>
+
+                        <td scope="col">{{item.amount}}€</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <b> Gesamtbetrag: {{travelExpense.costs}}€ </b>
+</div>

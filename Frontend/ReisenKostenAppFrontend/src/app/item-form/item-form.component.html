@@ -1,0 +1,30 @@
+<p> Bitte geben Sie das genaue Datum ein, eine Beschreibung des Einzelpostens sowie den Betrag.</p>
+<br>
+<form [formGroup]="itemForm" (ngSubmit)="itemSubmit()">
+
+    <div class="col">
+        <input type="date" class="form-control" placeholder="Datum" formControlName="date">
+    </div>
+    <div class="col">
+        <input type="text" class="form-control" placeholder="Beschreibung" formControlName="description">
+        <div *ngIf="itemForm.controls.description.errors && (itemForm.controls.description.touched || itemForm.controls.description.dirty)" class="alert alert-danger">
+            Bitte fügen Sie eine Beschreibung hinzu.
+        </div>
+    </div>
+    <div class="col">
+        <input type="number" class="form-control" placeholder="Betrag in €" formControlName="amount">
+        <div *ngIf="itemForm.controls.amount.errors && (itemForm.controls.amount.touched || itemForm.controls.amount.dirty)" class="alert alert-danger">
+            <div *ngIf="itemForm.controls.amount.errors.required">
+                Bitte einen Betrag angeben.
+            </div>
+            <div *ngIf="itemForm.controls.amount.errors.min">
+                Betrag darf nicht negativ sein.
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="itemForm.invalid" (onSubmit)="itemSubmit()">Anhang hinzufügen</button>
+
+    <!-- <button type="submit" (onSubmit)="itemSubmit()" (onSubmit)="Email()">send Email</button> -->
+
+</form>

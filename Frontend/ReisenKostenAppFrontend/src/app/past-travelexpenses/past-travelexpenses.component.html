@@ -1,0 +1,23 @@
+<h2>Ihre vergangenen Abrechnungen</h2>
+<h6>Den Status können Sie manuell mit einem Klick updaten.</h6>
+<h6>Bei Klick auf eine Monatsabrechnung öffnet sich eine Detailansicht zu dieser.</h6>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Monat</th>
+            <th scope="col">Jahr</th>
+            <th scope="col">Betrag</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let travelExpense of travelExpenseList">
+            <td scope="col" routerLink="../expenselist/{{travelExpense.id}}">{{travelExpense.id}}</td>
+            <td scope="col" routerLink="../expenselist/{{travelExpense.id}}">{{travelExpense.month}}</td>
+            <td scope="col" routerLink="../expenselist/{{travelExpense.id}}">{{travelExpense.year}}</td>
+
+            <td scope="col">{{travelExpense.costs}}€</td>
+
+        </tr>
+    </tbody>
+</table>
