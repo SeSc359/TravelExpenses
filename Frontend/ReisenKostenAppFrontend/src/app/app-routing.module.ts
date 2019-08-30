@@ -4,7 +4,6 @@ import { HomeComponent } from './home/home.component';
 
 import { CreateTravelExpenseComponent } from './create-travelexpense/create-travelexpense.component';
 import { PastTravelExpensesComponent } from './past-travelexpenses/past-travelexpenses.component';
-import { StatusComponent } from './status/status.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path: 'user/:userId/expenses', component: CreateTravelExpenseComponent},
   { path: 'user/:userId/expenses/:expenseId/items', component: ItemFormComponent},
   { path: 'user/:userId/expenses/:expenseId/items/:itemId/attachment', component:UploadComponent},
-  { path: 'status', component: StatusComponent },  
   { path: 'expenselist', component: PastTravelExpensesComponent },
   { path: 'expenselist/:expenseId', component:TravelExpensesDetailComponent},
   
