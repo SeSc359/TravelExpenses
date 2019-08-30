@@ -103,7 +103,7 @@ public class TravelExpenseController {
 	public void sendMailWithAttachment(@PathVariable long id) {
 		if (trexRepo.existsById(id)) {
 			TravelExpense trEx = trexRepo.findById(id).get();
-			mailService.sendMessageWithAttachment("kramer.seb@gmx.de", trEx);
+			mailService.sendMessageWithAttachment(trEx.getUser().getEmail(), trEx);
 		}
 	}
 }

@@ -23,8 +23,4 @@ public class InsertAttachmentDto {
 
 	public String dataString;
 
-//	@ManyToOne()
-//	@JoinColumn(name = "attachment_Id")
-////	@JsonManagedReference
-//	private TravelExpense travelexpense;
 }

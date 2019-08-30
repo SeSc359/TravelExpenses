@@ -21,15 +21,4 @@ public class MailController {
 		mailService.sendSimpleMessage("hajoklueten@gmail.com", "test", "hello world");
 	}
 
-	// TODO replace test-recipient with required recipient.
-//	@PostMapping("/send/attachment")
-//	public void sendMailWithAttachment(@RequestBody TravelExpense trex) {
-//		List<String> filepaths = new ArrayList<String>();
-//		String subject = "Neue Reisekostenrechnung";
-//		String text = trex.getStaffNumber().toString() + " hat neue Reisekostenrechung über Betrag " + trex.getCosts()
-//				+ " hinzugefügt.";
-//		mailService.sendMessageWithAttachment("hajoklueten@gmail.com", subject, text, filepaths);
-//
-//	}
-
 }

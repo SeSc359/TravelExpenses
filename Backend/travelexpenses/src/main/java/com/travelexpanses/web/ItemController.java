@@ -64,12 +64,6 @@ public class ItemController {
 		return itemRepo.findByTravelExpenseId(expenseId);
 	}
 
-//	@PostMapping("/items")
-//	public Item createItemTest(@RequestBody Item item) {
-//		item.setId(null);
-//		return itemRepo.save(item);
-//	}
-
 	@PostMapping("items/{id}/attachment")
 	public ResponseEntity<?> insertAttachment(@PathVariable long id, @RequestParam("file") MultipartFile file) {
 
@@ -93,12 +87,9 @@ public class ItemController {
 		return ResponseEntity.notFound().build();
 	}
 
-
 	@GetMapping("items/{itemId}/attachment/{id}")
 	public ResponseEntity<?> getAttachmentFile(@PathVariable int id, @PathVariable long itemId) {
-//		Optional<Attachment> attachmentById = attachmentRepo.findById(id);
-//		return ResponseEntity.ok().contentType(MediaType.parseMediaType(attachmentById.get().getFileType()))
-//				.body(attachmentById.get().getFile());
+
 		Optional<Item> itemById = itemRepo.findById(itemId);
 		Item item = itemById.get();
 		Attachment attachment = item.getAttachmentList().get(id - 1);

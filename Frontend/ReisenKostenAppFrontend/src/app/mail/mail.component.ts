@@ -19,9 +19,7 @@ export class MailComponent implements OnInit {
 
   sendMail(){    
     const exId = +this.route.snapshot.paramMap.get('expenseId');   
-    this.travelExpenseService.sendWithAttachment(exId).subscribe(exId => { 
-      this.router.navigate([`/expenselist/${exId}/`]); }
-      );
+    this.travelExpenseService.sendWithAttachment(exId).subscribe();
     this.sent = true;
     }
 }

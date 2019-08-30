@@ -1,4 +1,6 @@
 <br>
+<ng-template [ngIf]="sent == false">
 <button type="submit" (click)="sendMail()">Mail mit zusammengerechnetem Betrag und Anhang versenden</button>
-
-<ng-template [ngIf]="sent"><div><h3>Erfolg! Vielen Dank für die Einreichung.</h3></div></ng-template>
+</ng-template>
+<ng-template [ngIf]="sent"><div><h3>Erfolg! Vielen Dank für die Einreichung.</h3>
+<br><button routerLink="user/1/expenses">Neue Monatsabrechnung anlegen</button></div></ng-template>

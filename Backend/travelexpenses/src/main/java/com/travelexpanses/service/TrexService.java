@@ -10,8 +10,6 @@ import com.travelexpanses.entities.TravelExpense;
 @Service
 public class TrexService {
 
-//	@Autowired
-//	TravelExpense trex;
 
 	public double totalCosts(TravelExpense trex) {
 		List<Item> itemList = trex.getItemList();

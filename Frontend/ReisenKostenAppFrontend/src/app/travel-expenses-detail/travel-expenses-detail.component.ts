@@ -18,9 +18,13 @@ export class TravelExpensesDetailComponent implements OnInit {
  
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('expenseId');
+    
     this.travelExpenseService.getTravelExpenseById(id).subscribe(travelExpense=>(this.travelExpense = travelExpense));
-    this.travelExpenseService.getTotalCosts(id).subscribe(costs =>(this.travelExpense.costs = costs));
     this.travelExpenseService.getItemsByTrexId(id).subscribe(itemList =>(this.itemList = itemList));
+    this.travelExpenseService.getTotalCosts(id).subscribe(costs =>(this.travelExpense.costs = costs));
   }
 
+  alreadySent() {
+
+  }
 }

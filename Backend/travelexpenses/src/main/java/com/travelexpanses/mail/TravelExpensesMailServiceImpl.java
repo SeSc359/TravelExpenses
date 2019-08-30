@@ -19,13 +19,10 @@ import com.travelexpanses.service.TrexService;
 
 @Service
 public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService {
-	
-//	@Autowired 
-//	private TravelExpenseRepository travelExpenseRepo;
-	
+
 	@Autowired
 	public JavaMailSender emailSender;
-	
+
 	@Autowired
 	TrexService trexService;
 
@@ -38,24 +35,24 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 		message.setFrom("hajoklueten@gmail.com");
 		emailSender.send(message);
 	}
-	
+
 	@Override
 	public void sendSimpleMessageUsingTemplate(String to, String subject, SimpleMailMessage template,
 			String[] templateArgs) {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	@Override
 	public void sendMessageWithAttachment(String to, TravelExpense travelExpense) {
-		
+
 		MimeMessage message = emailSender.createMimeMessage();
 
 		// build separate function returning MimeMessage
 		MimeMessageHelper helper;
 		try {
 			helper = new MimeMessageHelper(message, true);
-			
+
 			String subject = "Neue Reisekostenrechnung";
 			String text = travelExpense.getUser().getName().toString() + " hat neue Reisekostenrechung über Betrag "
 					+ trexService.totalCosts(travelExpense) + " hinzugefügt.";
