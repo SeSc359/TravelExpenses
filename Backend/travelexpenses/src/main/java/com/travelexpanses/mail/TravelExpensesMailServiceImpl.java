@@ -53,9 +53,10 @@ public class TravelExpensesMailServiceImpl implements ITravelExpensesMailService
 		try {
 			helper = new MimeMessageHelper(message, true);
 
-			String subject = "Neue Reisekostenrechnung";
-			String text = travelExpense.getUser().getName().toString() + " hat neue Reisekostenrechung über Betrag "
-					+ trexService.totalCosts(travelExpense) + " hinzugefügt.";
+			String subject = "Neue Reisekostenabrechnung für" + travelExpense.getMonth() + "/" + travelExpense.getYear();
+			String text = travelExpense.getUser().getName().toString() + " " + "(PN: " + travelExpense.getUser().getStaffNumber() + ") hat eine neue Reisekostenabrechnung(" 
+					+ travelExpense.getMonth() + "/" + travelExpense.getYear() + ") über "
+					+ trexService.totalCosts(travelExpense) + "€ hinzugefügt.";
 			helper.setTo(to);
 			helper.setSubject(subject);
 			helper.setText(text);
